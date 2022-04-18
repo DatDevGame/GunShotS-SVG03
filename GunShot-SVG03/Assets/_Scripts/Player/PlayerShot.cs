@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class PlayerShot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject projectilePrefabs;
+    public GameObject firePrefabs;
+    public Transform posGun;
+
+    private float timer;
+    private float timeDuration;
+
+
+    protected virtual void Start()
     {
-        
+        timeDuration = 0.2f;
+        timer = timeDuration;
+    }
+    protected virtual void Update()
+    {
+        Shot();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Shot()
     {
-        
+        if (Input.GetMouseButton(0))
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                Instantiate(firePrefabs, posGun.position, posGun.rotation);
+                Instantiate(projectilePrefabs, posGun.position, posGun.rotation);
+                timer = timeDuration;
+            }
+        }
     }
 }

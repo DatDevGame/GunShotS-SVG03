@@ -30,24 +30,5 @@ public class PlayerMove : MonoBehaviour
         this.vertical.x = pressHorizontal * moveSpeed * Time.deltaTime;
         this.vertical.y = pressVertical * moveSpeed * Time.deltaTime;
         transform.Translate(vertical);
-
-        if (pressHorizontal > 0 && !facingRight)
-        {
-            PlayerdirectionMove();
-        }
-        else if (pressHorizontal < 0 && facingRight)
-        {
-            PlayerdirectionMove();
-        }
-
-
-    }
-
-    protected virtual void PlayerdirectionMove()
-    {
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        facingRight = !facingRight;
-        transform.localScale = theScale;
     }
 }
