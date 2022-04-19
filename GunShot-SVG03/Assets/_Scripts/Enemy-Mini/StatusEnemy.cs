@@ -5,11 +5,69 @@ using UnityEngine;
 public class StatusEnemy : MonoBehaviour
 {
     public static StatusEnemy ins;
-    public Animator anim;
 
-    protected virtual void Start()
+    Animator anim;
+
+    protected int currentHealth;
+    protected int maxHealth;
+
+    private void Awake()
     {
         ins = this;
         anim = GetComponent<Animator>();
+    }
+    protected virtual void Start()
+    {
+        if (this.gameObject.tag == "Crab")
+        {
+            maxHealth = 100;
+            currentHealth = maxHealth;
+        }
+
+        if (this.gameObject.tag == "Bat")
+        {
+            maxHealth = 50;
+            currentHealth = maxHealth;
+        }
+        if (this.gameObject.tag == "Golem")
+        {
+            maxHealth = 200;
+            currentHealth = maxHealth;
+        }
+    }
+    protected virtual void Update()
+    {
+
+    }
+
+    public virtual void receiveDame(int dame)
+    {
+        currentHealth -= dame;
+        if (currentHealth <= 0)
+        {
+            dead();
+        }
+    }
+
+    protected virtual void dead()
+    {
+        if (this.gameObject.tag == "Crab")
+        {
+            anim.SetBool("CrabDead", true);
+            Destroy(gameObject, 1f);
+        }
+        if (this.gameObject.tag == "Bat")
+        {
+            anim.SetBool("BatDead", true);
+            Destroy(gameObject, 1f);
+        }
+        if (this.gameObject.tag == "Golem")
+        {
+            anim.SetBool("GolemDead", true);
+            Destroy(gameObject, 2.3f);
+        }
+        GetComponent<Collider2D>().enabled = false;
+
+
     }
 }
