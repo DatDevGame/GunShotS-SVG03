@@ -33,6 +33,16 @@ public class EnemyMoveGeneral : MonoBehaviour
             moveSpeed = 2f;
         }
 
+        if (this.gameObject.tag == "Rat")
+        {
+            moveSpeed = 2f;
+        }
+
+        if (this.gameObject.tag == "GolemUp")
+        {
+            moveSpeed = 0.5f;
+        }
+
     }
     protected virtual void Update()
     {
@@ -58,10 +68,22 @@ public class EnemyMoveGeneral : MonoBehaviour
             {
                 return;
             }
-            //Anim Move Bat
+            //Anim Move Golem
             if (this.gameObject.tag == "Golem")
             {
                 anim.SetBool("GolemWalk", false);
+                return;
+            }
+            //Anim Move Rat
+            if (this.gameObject.tag == "Rat")
+            {
+                anim.SetBool("RatWalk", false);
+                return;
+            }
+            //Anim Move GolemUp
+            if (this.gameObject.tag == "GolemUp")
+            {
+                anim.SetBool("GolemUpWalk", false);
                 return;
             }
         }
@@ -87,12 +109,24 @@ public class EnemyMoveGeneral : MonoBehaviour
             anim.SetBool("GolemWalk", true);
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
         }
+        //Move Golem
+        if (this.gameObject.tag == "Rat")
+        {
+            if (anim.GetBool("RatDead")) return;
+            anim.SetBool("RatWalk", true);
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+        }
+        //Move Golem Up
+        if (this.gameObject.tag == "GolemUp")
+        {
+            if (anim.GetBool("GolemUpDead")) return;
+            anim.SetBool("GolemUpWalk", true);
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+        }
     }
 
     protected virtual void directionMove()
     {
-        //if (anim.GetBool("CrabDead") || anim.GetBool("BatDead") || anim.GetBool("GolemDead")) return;
-
         if (this.gameObject.tag == "Golem")
         {
             if (anim.GetBool("GolemDead")) return;
@@ -101,9 +135,17 @@ public class EnemyMoveGeneral : MonoBehaviour
         {
             if (anim.GetBool("BatDead")) return;
         }
-        else if (anim.GetBool("CrabDead"))
+        else if (this.gameObject.tag == "Crab")
         {
             if (anim.GetBool("CrabDead")) return;
+        }
+        else if (this.gameObject.tag == "Rat")
+        {
+            if (anim.GetBool("RatDead")) return;
+        }
+        else if (this.gameObject.tag == "GolemUp")
+        {
+            if (anim.GetBool("GolemUpDead")) return;
         }
 
         if (transform.position.x < target.transform.position.x)

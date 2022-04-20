@@ -34,6 +34,16 @@ public class StatusEnemy : MonoBehaviour
             maxHealth = 200;
             currentHealth = maxHealth;
         }
+        if (this.gameObject.tag == "Rat")
+        {
+            maxHealth = 100;
+            currentHealth = maxHealth;
+        }
+        if (this.gameObject.tag == "GolemUp")
+        {
+            maxHealth = 500;
+            currentHealth = maxHealth;
+        }
     }
     protected virtual void Update()
     {
@@ -54,17 +64,27 @@ public class StatusEnemy : MonoBehaviour
         if (this.gameObject.tag == "Crab")
         {
             anim.SetBool("CrabDead", true);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 3f);
         }
         if (this.gameObject.tag == "Bat")
         {
             anim.SetBool("BatDead", true);
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 3f);
         }
         if (this.gameObject.tag == "Golem")
         {
             anim.SetBool("GolemDead", true);
-            Destroy(gameObject, 2.3f);
+            Destroy(gameObject, 3f);
+        }
+        if (this.gameObject.tag == "Rat")
+        {
+            anim.SetBool("RatDead", true);
+            Destroy(gameObject, 3f);
+        }
+        if (this.gameObject.tag == "GolemUp")
+        {
+            anim.SetBool("GolemUpDead", true);
+            Destroy(gameObject, 3f);
         }
         GetComponent<Collider2D>().enabled = false;
 

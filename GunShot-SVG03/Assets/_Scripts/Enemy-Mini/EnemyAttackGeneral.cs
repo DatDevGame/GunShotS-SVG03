@@ -10,18 +10,26 @@ public class EnemyAttackGeneral : MonoBehaviour
     public Transform attackPoint;
     public LayerMask layer;
     [SerializeField] private float attackRadius;
+
+    //Time Next Attack
+    protected float timer;
+    protected float timeDuration;
+
     //Boxcast Check
     public Transform posBoxCast;
     [SerializeField] private float boxcastX;
     [SerializeField] private float boxcastY;
 
-    protected float timer;
-    protected float timeDuration;
 
     //type Dame Enemy
     protected int dameCrab;
     protected int dameBat;
     protected int dameGolem;
+    protected int dameRat;
+    protected int dameGolemUp;
+
+    //Skill GolemUp
+
 
 
     private void Awake()
@@ -37,6 +45,8 @@ public class EnemyAttackGeneral : MonoBehaviour
         dameCrab = 1;
         dameBat = 2;
         dameGolem = 3;
+        dameRat = 2;
+        dameGolemUp = 10;
 
         timeDuration = 2f;
         timer = timeDuration;
@@ -62,6 +72,14 @@ public class EnemyAttackGeneral : MonoBehaviour
             if (this.gameObject.tag == "Golem")
             {
                 hitPlayer.GetComponent<StatusPlayer>().ReveiDame(dameGolem);
+            }
+            if (this.gameObject.tag == "Golem")
+            {
+                hitPlayer.GetComponent<StatusPlayer>().ReveiDame(dameRat);
+            }
+            if (this.gameObject.tag == "GolemUp")
+            {
+                hitPlayer.GetComponent<StatusPlayer>().ReveiDame(dameGolemUp);
             }
         }
     }
@@ -105,6 +123,18 @@ public class EnemyAttackGeneral : MonoBehaviour
             {
                 anim.SetTrigger("GolemAttack");
                 timer = timeDuration;
+            }
+
+            if (this.gameObject.tag == "Rat")
+            {
+                anim.SetTrigger("RatAttack");
+                timer = timeDuration;
+            }
+
+            if (this.gameObject.tag == "GolemUp")
+            {
+                anim.SetTrigger("GolemUpAttack");
+                timer = 5f;
             }
 
         }
