@@ -3342,7 +3342,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144683600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.27, z: 0}
+  m_LocalPosition: {x: 4.81, y: 0.27, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 812010549}
@@ -3366,10 +3366,11 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 64
-  attackRadius: 0
+  attackRadius: 4.26
   posBoxCast: {fileID: 812010549}
   boxcastX: 10
   boxcastY: 7
+  checkPlayerOnBox: 0
 --- !u!114 &144683605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13283,7 +13284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928051732}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.27305162, y: 0.32150233, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.16666667, y: 0.16666667, z: 0.16666667}
   m_Children: []
   m_Father: {fileID: 144683603}
@@ -14152,6 +14153,7 @@ MonoBehaviour:
   posBoxCast: {fileID: 671033766}
   boxcastX: 1.04
   boxcastY: 0.7
+  checkPlayerOnBox: 0
 --- !u!114 &977881261
 MonoBehaviour:
   m_ObjectHideFlags: 0

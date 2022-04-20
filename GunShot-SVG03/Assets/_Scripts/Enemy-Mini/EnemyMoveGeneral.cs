@@ -80,12 +80,6 @@ public class EnemyMoveGeneral : MonoBehaviour
                 anim.SetBool("RatWalk", false);
                 return;
             }
-            //Anim Move GolemUp
-            if (this.gameObject.tag == "GolemUp")
-            {
-                anim.SetBool("GolemUpWalk", false);
-                return;
-            }
         }
 
 
@@ -109,7 +103,7 @@ public class EnemyMoveGeneral : MonoBehaviour
             anim.SetBool("GolemWalk", true);
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
         }
-        //Move Golem
+        //Move Rat
         if (this.gameObject.tag == "Rat")
         {
             if (anim.GetBool("RatDead")) return;
@@ -120,8 +114,18 @@ public class EnemyMoveGeneral : MonoBehaviour
         if (this.gameObject.tag == "GolemUp")
         {
             if (anim.GetBool("GolemUpDead")) return;
-            anim.SetBool("GolemUpWalk", true);
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+
+            if (distance > 4)
+            {
+                anim.SetBool("GolemUpWalk", true);
+                transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+                Debug.Log(distance);
+            }
+            else if (distance <= 4)
+            {
+                anim.SetBool("GolemUpWalk", false);
+                return;
+            }
         }
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyAttackGeneral : MonoBehaviour
 {
+    public static EnemyAttackGeneral ins;
+
     Animator anim;
 
     //Attack Point
@@ -19,6 +21,7 @@ public class EnemyAttackGeneral : MonoBehaviour
     public Transform posBoxCast;
     [SerializeField] private float boxcastX;
     [SerializeField] private float boxcastY;
+    public bool checkPlayerOnBox;
 
 
     //type Dame Enemy
@@ -34,6 +37,7 @@ public class EnemyAttackGeneral : MonoBehaviour
 
     private void Awake()
     {
+        ins = this;
         anim = GetComponent<Animator>();
 
         attackPoint = transform.Find("attackPoint");
@@ -73,13 +77,9 @@ public class EnemyAttackGeneral : MonoBehaviour
             {
                 hitPlayer.GetComponent<StatusPlayer>().ReveiDame(dameGolem);
             }
-            if (this.gameObject.tag == "Golem")
+            if (this.gameObject.tag == "Rat")
             {
                 hitPlayer.GetComponent<StatusPlayer>().ReveiDame(dameRat);
-            }
-            if (this.gameObject.tag == "GolemUp")
-            {
-                hitPlayer.GetComponent<StatusPlayer>().ReveiDame(dameGolemUp);
             }
         }
     }
@@ -92,7 +92,6 @@ public class EnemyAttackGeneral : MonoBehaviour
             {
                 timeAttack();
             }
-            else return;
         }
     }
     private void OnDrawGizmos()
@@ -133,6 +132,8 @@ public class EnemyAttackGeneral : MonoBehaviour
 
             if (this.gameObject.tag == "GolemUp")
             {
+                if (anim.GetBool("GolemUpDead")) return;
+
                 anim.SetTrigger("GolemUpAttack");
                 timer = 5f;
             }
