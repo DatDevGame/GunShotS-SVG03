@@ -115,13 +115,12 @@ public class EnemyMoveGeneral : MonoBehaviour
         {
             if (anim.GetBool("GolemUpDead")) return;
 
-            if (distance > 4)
+            if (distance > 6)
             {
                 anim.SetBool("GolemUpWalk", true);
                 transform.position = Vector2.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
-                Debug.Log(distance);
             }
-            else if (distance <= 4)
+            else if (distance <= 6)
             {
                 anim.SetBool("GolemUpWalk", false);
                 return;

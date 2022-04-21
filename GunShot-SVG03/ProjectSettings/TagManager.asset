@@ -9,6 +9,8 @@ TagManager:
   - Golem
   - Rat
   - GolemUp
+  - ProjectilePlayer
+  - ProjectileEnemy
   layers:
   - Default
   - TransparentFX
