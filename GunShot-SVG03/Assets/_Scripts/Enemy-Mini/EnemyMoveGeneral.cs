@@ -10,6 +10,14 @@ public class EnemyMoveGeneral : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float distance;
 
+    //Move Random Enemy Slime
+    protected int randMove;
+    protected float randX;
+    protected float randY;
+    protected float timer;
+    protected float timeDuration;
+    protected float timer2;
+    protected float time2Duration;
 
     private void Awake()
     {
@@ -43,6 +51,19 @@ public class EnemyMoveGeneral : MonoBehaviour
             moveSpeed = 0.5f;
         }
 
+        if (this.gameObject.tag == "Slime")
+        {
+            moveSpeed = 1f;
+        }
+
+
+        //Random Pos Move Enemy Slime
+        timeDuration = 1;
+        timer = timeDuration;
+        time2Duration = 2;
+        timer2 = time2Duration; 
+        randX = Random.Range(1, 5);
+        randY = Random.Range(1, 5);
     }
     protected virtual void Update()
     {
@@ -124,6 +145,35 @@ public class EnemyMoveGeneral : MonoBehaviour
             {
                 anim.SetBool("GolemUpWalk", false);
                 return;
+            }
+        }
+
+        //Move Slime Random
+        if (this.gameObject.tag == "Slime")
+        {
+
+            if (anim.GetBool("SlimeDead")) return;
+
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                anim.SetBool("SlimeWalk", true);
+                Vector2 moveSlime = new Vector2(target.transform.position.x + randX, target.transform.position.y + randY);
+                transform.position = Vector2.MoveTowards(transform.position,
+                    moveSlime,
+                    moveSpeed * Time.deltaTime);
+
+
+                timer2 -= Time.deltaTime;
+                if (timer2 <= 0)
+                {
+                    anim.SetBool("SlimeWalk", false);
+                    randX = Random.Range(1, 10);
+                    randY = Random.Range(1, 10);
+                    timer2 = time2Duration;
+                    timer = timeDuration;
+                }
+
             }
         }
     }

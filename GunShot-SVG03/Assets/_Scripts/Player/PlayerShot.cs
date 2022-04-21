@@ -18,7 +18,7 @@ public class PlayerShot : MonoBehaviour
     protected virtual void Start()
     {
         aus = GetComponent<AudioSource>();
-        timeDuration = 0.05f;
+        timeDuration = 0.3f;
         timer = timeDuration;
     }
     protected virtual void Update()

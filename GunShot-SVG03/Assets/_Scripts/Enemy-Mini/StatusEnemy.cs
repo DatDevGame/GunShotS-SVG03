@@ -41,7 +41,12 @@ public class StatusEnemy : MonoBehaviour
         }
         if (this.gameObject.tag == "GolemUp")
         {
-            maxHealth = 500;
+            maxHealth = 1000;
+            currentHealth = maxHealth;
+        }
+        if (this.gameObject.tag == "Slime")
+        {
+            maxHealth = 200;
             currentHealth = maxHealth;
         }
     }
@@ -84,6 +89,11 @@ public class StatusEnemy : MonoBehaviour
         if (this.gameObject.tag == "GolemUp")
         {
             anim.SetBool("GolemUpDead", true);
+            Destroy(gameObject, 3f);
+        }
+        if (this.gameObject.tag == "Slime")
+        {
+            anim.SetBool("SlimeDead", true);
             Destroy(gameObject, 3f);
         }
         GetComponent<Collider2D>().enabled = false;

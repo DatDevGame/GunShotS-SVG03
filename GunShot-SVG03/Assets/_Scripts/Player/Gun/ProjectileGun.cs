@@ -64,5 +64,13 @@ public class ProjectileGun : MonoBehaviour
             hitEnemy.receiveDame(shotDame);
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Slime"))
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            StatusEnemy hitEnemy = collision.gameObject.GetComponent<StatusEnemy>();
+            hitEnemy.receiveDame(shotDame);
+            Destroy(gameObject);
+        }
     }
 }

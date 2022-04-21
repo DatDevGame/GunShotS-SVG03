@@ -29,8 +29,8 @@ public class SkillGolemUp : MonoBehaviour
     }
     protected virtual void Update()
     {
-        randPosSkillX = Random.Range(-2f, 2f);
-        randPosSkillY = Random.Range(-2f, 2f);
+        randPosSkillX = Random.Range(-3f, 3f);
+        randPosSkillY = Random.Range(-3f, 3f);
 
         spawnSkillTwo();
     }
@@ -39,6 +39,11 @@ public class SkillGolemUp : MonoBehaviour
     {
         Instantiate(circleRedPrefabs, new Vector2(target.transform.position.x + randPosSkillX, target.transform.position.y + randPosSkillY), Quaternion.identity);
         Instantiate(skillPrefabs, new Vector2(target.transform.position.x + randPosSkillX, (target.transform.position.y + randPosSkillY) + 0.3f), Quaternion.identity);
+    }
+    protected virtual void spawnCircleRedPlayer()
+    {
+        Instantiate(circleRedPrefabs, new Vector2(target.transform.position.x, target.transform.position.y), Quaternion.identity);
+        Instantiate(skillPrefabs, new Vector2(target.transform.position.x, (target.transform.position.y) + 0.3f), Quaternion.identity);
     }
 
     protected virtual void spawnSkillTwo()
