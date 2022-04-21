@@ -14,7 +14,7 @@ public class ProjectileGun : MonoBehaviour
     }
     void Start()
     {
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, 1f);
     }
 
     void Update()
