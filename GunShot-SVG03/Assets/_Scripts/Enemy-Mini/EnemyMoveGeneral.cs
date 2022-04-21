@@ -48,12 +48,12 @@ public class EnemyMoveGeneral : MonoBehaviour
 
         if (this.gameObject.tag == "GolemUp")
         {
-            moveSpeed = 0.5f;
+            moveSpeed = 4f;
         }
 
         if (this.gameObject.tag == "Slime")
         {
-            moveSpeed = 1f;
+            moveSpeed = 3f;
         }
 
 

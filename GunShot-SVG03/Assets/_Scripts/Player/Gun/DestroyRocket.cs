@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyExlosion : MonoBehaviour
+public class DestroyRocket : MonoBehaviour
 {
     protected virtual void Start()
     {
-        Destroy(gameObject, 0.3f);
+        Destroy(gameObject, 1f);
     }
 }

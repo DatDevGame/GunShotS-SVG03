@@ -6,20 +6,78 @@ public class PlayerShot : MonoBehaviour
 {
     AudioSource aus;
     public AudioClip soundPistol;
+    public AudioClip soundMachineGun;
+    public AudioClip soundRocket;
 
     public GameObject projectilePrefabs;
+    public GameObject projectileLazerPrefabs;
+    public GameObject projectileRocketPrefabs;
     public GameObject firePrefabs;
-    public Transform posGun;
 
-    private float timer;
-    private float timeDuration;
+    //Get Pos Head Gun
+    public GameObject posGun;
+    protected bool pistol;
+    public GameObject posGlock;
+    protected bool Glock;
+    public GameObject posFlame;
+    protected bool Flame;
+    public GameObject posMachineGun;
+    protected bool MachineGun;
+    public GameObject posRocket;
+    protected bool Rocket;
+
+    //time Shot Pistrol
+    private float timerPistrol;
+    private float timeDurationPistrol;
+
+    //time Shot Pistrol
+    private float timerGlock;
+    private float timeDurationGlock;
+
+    //time Shot Flame
+    private float timerFlame;
+    private float timeDurationFlame;
+
+    //time Shot MachineGun
+    private float timerMachineGun;
+    private float timeDurationMachineGun;
+
+    //time Shot MachineGun
+    private float timerRocket;
+    private float timeDurationRocket;
 
 
-    protected virtual void Start()
+    private void Awake()
     {
         aus = GetComponent<AudioSource>();
-        timeDuration = 0.3f;
-        timer = timeDuration;
+        posGun = GameObject.Find("posGun");
+        posGlock = GameObject.Find("posGlock");
+        posFlame = GameObject.Find("posFlame");
+        posMachineGun = GameObject.Find("posMachineGun");
+        posRocket = GameObject.Find("posRocket");
+    }
+    protected virtual void Start()
+    {
+        Flame = true;
+        //time Shot Pistrol
+        timeDurationPistrol = 0.2f;
+        timerPistrol = timeDurationPistrol;
+
+        //time Shot Glock
+        timeDurationGlock = 0.15f;
+        timerGlock = timeDurationGlock;
+
+        //time Shot Flame
+        timeDurationFlame = 0.08f;
+        timerFlame = timeDurationFlame;
+
+        //time Shot MachineGun
+        timeDurationMachineGun = 0.15f;
+        timerMachineGun = timeDurationMachineGun;
+
+        //time Shot Rocket
+        timeDurationRocket = 0.15f;
+        timerRocket = timeDurationRocket;
     }
     protected virtual void Update()
     {
@@ -28,15 +86,66 @@ public class PlayerShot : MonoBehaviour
 
     protected virtual void Shot()
     {
-        if (Input.GetMouseButton(0))
+        //Gun Pistol
+        if (Input.GetMouseButton(0) && pistol)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            timerPistrol -= Time.deltaTime;
+            if (timerPistrol <= 0)
             {
                 aus.PlayOneShot(soundPistol);
-                Instantiate(firePrefabs, posGun.position, posGun.rotation);
-                Instantiate(projectilePrefabs, posGun.position, posGun.rotation);
-                timer = timeDuration;
+                Instantiate(firePrefabs, posGun.transform.position, posGun.transform.rotation);
+                Instantiate(projectilePrefabs, posGun.transform.position, posGun.transform.rotation);
+                timerPistrol = timeDurationPistrol;
+            }
+        }
+
+        //Gun Glock
+        if (Input.GetMouseButton(0) && Glock)
+        {
+            timerGlock -= Time.deltaTime;
+            if (timerGlock <= 0)
+            {
+                aus.PlayOneShot(soundPistol);
+                Instantiate(firePrefabs, posGlock.transform.position, posGlock.transform.rotation);
+                Instantiate(projectilePrefabs, posGlock.transform.position, posGlock.transform.rotation);
+                timerGlock = timeDurationGlock;
+            }
+        }
+
+        //Gun Flame
+        if (Input.GetMouseButton(0) && Flame)
+        {
+            timerFlame -= Time.deltaTime;
+            if (timerFlame <= 0)
+            {
+                aus.PlayOneShot(soundPistol);
+                Instantiate(firePrefabs, posFlame.transform.position, posFlame.transform.rotation);
+                Instantiate(projectilePrefabs, posFlame.transform.position, posFlame.transform.rotation);
+                timerFlame = timeDurationFlame;
+            }
+        }
+
+        //Gun MachineGun
+        if (Input.GetMouseButton(0) && MachineGun)
+        {
+            timerMachineGun -= Time.deltaTime;
+            if (timerMachineGun <= 0)
+            {
+                aus.PlayOneShot(soundMachineGun);
+                Instantiate(projectileLazerPrefabs, posMachineGun.transform.position, posMachineGun.transform.rotation);
+                timerMachineGun = timeDurationMachineGun;
+            }
+        }
+
+        //Gun Rocket
+        if (Input.GetMouseButton(0) && Rocket)
+        {
+            timerRocket -= Time.deltaTime;
+            if (timerRocket <= 0)
+            {
+                aus.PlayOneShot(soundRocket);
+                Instantiate(projectileRocketPrefabs, posRocket.transform.position, posRocket.transform.rotation);
+                timerRocket = timeDurationRocket;
             }
         }
     }

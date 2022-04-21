@@ -23,7 +23,8 @@ public class ProjectileGun : MonoBehaviour
         Vector2 move = Vector2.right * speed * Time.deltaTime;
         transform.Translate(move);
     }
-    public void OnTriggerEnter2D(Collider2D collision)
+    
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Crab"))
         {

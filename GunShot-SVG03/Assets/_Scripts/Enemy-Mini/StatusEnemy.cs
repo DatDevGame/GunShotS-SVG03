@@ -8,8 +8,9 @@ public class StatusEnemy : MonoBehaviour
 
     Animator anim;
 
-    protected int currentHealth;
+    public int currentHealth;
     protected int maxHealth;
+
 
     private void Awake()
     {

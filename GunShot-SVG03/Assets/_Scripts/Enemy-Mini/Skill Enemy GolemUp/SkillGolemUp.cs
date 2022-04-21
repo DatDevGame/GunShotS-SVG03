@@ -24,7 +24,7 @@ public class SkillGolemUp : MonoBehaviour
     }
     protected virtual void Start()
     {
-        timeDuration = 10f;
+        timeDuration = 20f;
         timer = timeDuration;
     }
     protected virtual void Update()
