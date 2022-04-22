@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  coinPrefabs: {fileID: 2139928061372228748, guid: ba496b5be2837384db502c01c42df07e, type: 3}
 --- !u!114 &2481508466075360118
 MonoBehaviour:
   m_ObjectHideFlags: 0

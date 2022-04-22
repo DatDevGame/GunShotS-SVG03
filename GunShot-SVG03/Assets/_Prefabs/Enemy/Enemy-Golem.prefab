@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a04fa1135e61f428ca8c77f1a1b831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
+  coinPrefabs: {fileID: 2139928061372228748, guid: ba496b5be2837384db502c01c42df07e, type: 3}
 --- !u!114 &7755977723472590837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +205,7 @@ MonoBehaviour:
   posBoxCast: {fileID: 7755977725273395432}
   boxcastX: 1.04
   boxcastY: 0.7
+  checkPlayerOnBox: 0
 --- !u!1 &7755977724250910464
 GameObject:
   m_ObjectHideFlags: 0

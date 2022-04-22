@@ -6,12 +6,22 @@ public class StatusPlayer : MonoBehaviour
 {
     public static StatusPlayer ins;
 
+    //Component
+    AudioSource aus;
+
     //Health Player
     [SerializeField] public int currentHealth;
     [SerializeField] private int maxHealth;
+
     //Status Item
     public int coin;
+    public AudioClip soundCoin;
 
+
+    private void Awake()
+    {
+        aus = GetComponent<AudioSource>();
+    }
     protected virtual void Start()
     {
         //SingleTon
@@ -22,7 +32,7 @@ public class StatusPlayer : MonoBehaviour
         currentHealth = maxHealth;
 
         //Status Item
-        coin = 100;
+        coin = 9900;
 
     }
 
@@ -34,9 +44,16 @@ public class StatusPlayer : MonoBehaviour
             playerDead();
         }
     }
-
     protected virtual void playerDead()
     {
         Destroy(gameObject);
     }
+
+    //Receive Coin
+    public void ReceiveCoin(int Recoin)
+    {
+        coin += Recoin;
+        aus.PlayOneShot(soundCoin);
+    }
 }
+
