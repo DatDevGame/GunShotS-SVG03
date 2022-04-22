@@ -8,6 +8,8 @@ public class PlayerShot : MonoBehaviour
 
     AudioSource aus;
     public AudioClip soundPistol;
+    public AudioClip soundGlock;
+    public AudioClip soundFlame;
     public AudioClip soundMachineGun;
     public AudioClip soundRocket;
 
@@ -53,11 +55,6 @@ public class PlayerShot : MonoBehaviour
     {
         ins = this;
         aus = GetComponent<AudioSource>();
-        //posGun = GameObject.Find("posGun");
-        //posGlock = GameObject.Find("posGlock");
-        //posFlame = GameObject.Find("posFlame");
-        //posMachineGun = GameObject.Find("posMachineGun");
-        //posRocket = GameObject.Find("posRocket");
     }
     protected virtual void Start()
     {
@@ -113,7 +110,7 @@ public class PlayerShot : MonoBehaviour
             timerGlock -= Time.deltaTime;
             if (timerGlock <= 0)
             {
-                aus.PlayOneShot(soundPistol);
+                aus.PlayOneShot(soundGlock);
                 Instantiate(firePrefabs, posGlock.transform.position, posGlock.transform.rotation);
                 Instantiate(projectilePrefabs, posGlock.transform.position, posGlock.transform.rotation);
                 timerGlock = timeDurationGlock;
@@ -126,7 +123,7 @@ public class PlayerShot : MonoBehaviour
             timerFlame -= Time.deltaTime;
             if (timerFlame <= 0)
             {
-                aus.PlayOneShot(soundPistol);
+                aus.PlayOneShot(soundFlame);
                 Instantiate(firePrefabs, posFlame.transform.position, posFlame.transform.rotation);
                 Instantiate(projectilePrefabs, posFlame.transform.position, posFlame.transform.rotation);
                 timerFlame = timeDurationFlame;

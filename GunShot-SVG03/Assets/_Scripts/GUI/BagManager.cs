@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BagManager : MonoBehaviour
 {
@@ -22,6 +23,13 @@ public class BagManager : MonoBehaviour
     protected bool LazerBought;
     protected bool RocketBought;
 
+    //Hiden Text Coin
+    public GameObject textCoinPistol;
+    public GameObject textCoinGlock;
+    public GameObject textCoinFlame;
+    public GameObject textCoinLazer;
+    public GameObject textCoinRocket;
+
     //Set Active Gun
     public GameObject Pistol;
     public GameObject Glock;
@@ -29,14 +37,14 @@ public class BagManager : MonoBehaviour
     public GameObject Lazer;
     public GameObject Rocket;
 
+    //Show Sound Not Buy Gun
+    AudioSource aus;
+    public AudioClip soundNotMoney;
+    public AudioClip soundBoughtGun;
+
     private void Awake()
     {
-        //Get Btn Buy
-        btnBuyPistol = GameObject.Find("ButtonBuyPistol");
-        btnBuyGlock = GameObject.Find("ButtonBuyGlock");
-        btnBuyFlame = GameObject.Find("ButtonBuyFlame");
-        btnBuyLazer = GameObject.Find("ButtonBuyLazer");
-        btnBuyRocket = GameObject.Find("ButtonBuyRocket");
+        aus = GetComponent<AudioSource>();
     }
     protected virtual void Start()
     {
@@ -46,15 +54,20 @@ public class BagManager : MonoBehaviour
         btnUseLazer.SetActive(false);
         btnUseRocket.SetActive(false);
     }
-
     //Set Button Buy GUI Bag Player
     public virtual void btnPistol()
     {
         if (StatusPlayer.ins.coin >= 0)
         {
+            aus.PlayOneShot(soundBoughtGun);
+            textCoinPistol.SetActive(false);
             PistolBought = true;
             btnBuyPistol.SetActive(false);
             btnUsePistol.SetActive(true);
+        }
+        else 
+        {
+            aus.PlayOneShot(soundNotMoney);
         }
     }
     public virtual void btnGlock()
@@ -62,9 +75,15 @@ public class BagManager : MonoBehaviour
         if (StatusPlayer.ins.coin >= 50)
         {
             StatusPlayer.ins.coin -= 50;
+            aus.PlayOneShot(soundBoughtGun);
+            textCoinGlock.SetActive(false);
             GlockBought = true;
             btnBuyGlock.SetActive(false);
             btnUseGlock.SetActive(true);
+        }
+        else
+        {
+            aus.PlayOneShot(soundNotMoney);
         }
     }
     public virtual void btnFlame()
@@ -72,9 +91,16 @@ public class BagManager : MonoBehaviour
         if (StatusPlayer.ins.coin >= 100)
         {
             StatusPlayer.ins.coin -= 100;
+            aus.PlayOneShot(soundBoughtGun);
+            textCoinFlame.SetActive(false);
             FlameBought = true;
             btnBuyFlame.SetActive(false);
             btnUseFlame.SetActive(true);
+            
+        }
+        else
+        {
+            aus.PlayOneShot(soundNotMoney);
         }
     }
     public virtual void btnLazer()
@@ -82,9 +108,15 @@ public class BagManager : MonoBehaviour
         if (StatusPlayer.ins.coin >= 200)
         {
             StatusPlayer.ins.coin -= 200;
+            aus.PlayOneShot(soundBoughtGun);
+            textCoinLazer.SetActive(false);
             LazerBought = true;
             btnBuyLazer.SetActive(false);
             btnUseLazer.SetActive(true);
+        }
+        else
+        {
+            aus.PlayOneShot(soundNotMoney);
         }
     }
     public virtual void btnRocket()
@@ -92,9 +124,15 @@ public class BagManager : MonoBehaviour
         if (StatusPlayer.ins.coin >= 500)
         {
             StatusPlayer.ins.coin -= 500;
+            aus.PlayOneShot(soundBoughtGun);
+            textCoinRocket.SetActive(false);
             RocketBought = true;
             btnBuyRocket.SetActive(false);
             btnUseRocket.SetActive(true);
+        }
+        else
+        {
+            aus.PlayOneShot(soundNotMoney);
         }
     }
 

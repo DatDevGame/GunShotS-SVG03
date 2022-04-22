@@ -22,7 +22,7 @@ public class StatusPlayer : MonoBehaviour
         currentHealth = maxHealth;
 
         //Status Item
-        coin = 9999;
+        coin = 100;
 
     }
 
