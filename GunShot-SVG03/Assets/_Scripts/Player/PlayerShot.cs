@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerShot : MonoBehaviour
 {
+    public static PlayerShot ins;
+
     AudioSource aus;
     public AudioClip soundPistol;
     public AudioClip soundMachineGun;
@@ -16,15 +18,15 @@ public class PlayerShot : MonoBehaviour
 
     //Get Pos Head Gun
     public GameObject posGun;
-    protected bool pistol;
+    public bool Pistol;
     public GameObject posGlock;
-    protected bool Glock;
+    public bool Glock;
     public GameObject posFlame;
-    protected bool Flame;
+    public bool Flame;
     public GameObject posMachineGun;
-    protected bool MachineGun;
+    public bool MachineGun;
     public GameObject posRocket;
-    protected bool Rocket;
+    public bool Rocket;
 
     //time Shot Pistrol
     private float timerPistrol;
@@ -49,30 +51,30 @@ public class PlayerShot : MonoBehaviour
 
     private void Awake()
     {
+        ins = this;
         aus = GetComponent<AudioSource>();
-        posGun = GameObject.Find("posGun");
-        posGlock = GameObject.Find("posGlock");
-        posFlame = GameObject.Find("posFlame");
-        posMachineGun = GameObject.Find("posMachineGun");
-        posRocket = GameObject.Find("posRocket");
+        //posGun = GameObject.Find("posGun");
+        //posGlock = GameObject.Find("posGlock");
+        //posFlame = GameObject.Find("posFlame");
+        //posMachineGun = GameObject.Find("posMachineGun");
+        //posRocket = GameObject.Find("posRocket");
     }
     protected virtual void Start()
     {
-        Flame = true;
         //time Shot Pistrol
         timeDurationPistrol = 0.2f;
         timerPistrol = timeDurationPistrol;
 
         //time Shot Glock
-        timeDurationGlock = 0.15f;
+        timeDurationGlock = 0.1f;
         timerGlock = timeDurationGlock;
 
         //time Shot Flame
-        timeDurationFlame = 0.08f;
+        timeDurationFlame = 0.05f;
         timerFlame = timeDurationFlame;
 
         //time Shot MachineGun
-        timeDurationMachineGun = 0.15f;
+        timeDurationMachineGun = 0.1f;
         timerMachineGun = timeDurationMachineGun;
 
         //time Shot Rocket
@@ -81,13 +83,19 @@ public class PlayerShot : MonoBehaviour
     }
     protected virtual void Update()
     {
+        posGun = GameObject.Find("posGun");
+        posGlock = GameObject.Find("posGlock");
+        posFlame = GameObject.Find("posFlame");
+        posMachineGun = GameObject.Find("posMachineGun");
+        posRocket = GameObject.Find("posRocket");
+
         Shot();
     }
 
     protected virtual void Shot()
     {
         //Gun Pistol
-        if (Input.GetMouseButton(0) && pistol)
+        if (Input.GetMouseButton(0) && Pistol)
         {
             timerPistrol -= Time.deltaTime;
             if (timerPistrol <= 0)

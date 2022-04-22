@@ -6,9 +6,11 @@ public class StatusPlayer : MonoBehaviour
 {
     public static StatusPlayer ins;
 
-
+    //Health Player
     [SerializeField] public int currentHealth;
     [SerializeField] private int maxHealth;
+    //Status Item
+    public int coin;
 
     protected virtual void Start()
     {
@@ -18,6 +20,9 @@ public class StatusPlayer : MonoBehaviour
         //Status Player
         maxHealth = 100;
         currentHealth = maxHealth;
+
+        //Status Item
+        coin = 9999;
 
     }
 

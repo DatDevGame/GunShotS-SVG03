@@ -53,7 +53,7 @@ public class StatusEnemy : MonoBehaviour
     }
     protected virtual void Update()
     {
-
+        Debug.Log(currentHealth);
     }
 
     public virtual void receiveDame(int dame)

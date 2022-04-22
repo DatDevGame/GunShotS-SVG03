@@ -22,6 +22,24 @@ public class ProjectileGun : MonoBehaviour
     {
         Vector2 move = Vector2.right * speed * Time.deltaTime;
         transform.Translate(move);
+        setDameWeapons();
+    }
+
+    protected virtual void setDameWeapons()
+    {
+        //Script - PlayerShot Singleton
+        if (PlayerShot.ins.Pistol || PlayerShot.ins.Glock || PlayerShot.ins.Flame)
+        {
+            shotDame = 1;
+        }
+        else if (PlayerShot.ins.MachineGun)
+        {
+            shotDame = 5;
+        }
+        else if (PlayerShot.ins.Rocket)
+        {
+            shotDame = 20;
+        }
     }
     
     public void OnCollisionEnter2D(Collision2D collision)
