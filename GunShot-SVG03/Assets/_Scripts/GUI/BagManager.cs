@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class BagManager : MonoBehaviour
 {
+    //Set UIManager
+    UIManager ui;
+
     //Set Btn Buy
     public GameObject btnBuyPistol;
     public GameObject btnBuyGlock;
@@ -45,6 +48,7 @@ public class BagManager : MonoBehaviour
     private void Awake()
     {
         aus = GetComponent<AudioSource>();
+        ui = FindObjectOfType<UIManager>();
     }
     protected virtual void Start()
     {
@@ -75,6 +79,7 @@ public class BagManager : MonoBehaviour
         if (StatusPlayer.ins.coin >= 50)
         {
             StatusPlayer.ins.coin -= 50;
+            ui.setCoinText("Coin: " + StatusPlayer.ins.coin);
             aus.PlayOneShot(soundBoughtGun);
             textCoinGlock.SetActive(false);
             GlockBought = true;
@@ -91,6 +96,7 @@ public class BagManager : MonoBehaviour
         if (StatusPlayer.ins.coin >= 100)
         {
             StatusPlayer.ins.coin -= 100;
+            ui.setCoinText("Coin: " + StatusPlayer.ins.coin);
             aus.PlayOneShot(soundBoughtGun);
             textCoinFlame.SetActive(false);
             FlameBought = true;
@@ -108,6 +114,7 @@ public class BagManager : MonoBehaviour
         if (StatusPlayer.ins.coin >= 200)
         {
             StatusPlayer.ins.coin -= 200;
+            ui.setCoinText("Coin: " + StatusPlayer.ins.coin);
             aus.PlayOneShot(soundBoughtGun);
             textCoinLazer.SetActive(false);
             LazerBought = true;
@@ -124,6 +131,7 @@ public class BagManager : MonoBehaviour
         if (StatusPlayer.ins.coin >= 500)
         {
             StatusPlayer.ins.coin -= 500;
+            ui.setCoinText("Coin: " + StatusPlayer.ins.coin);
             aus.PlayOneShot(soundBoughtGun);
             textCoinRocket.SetActive(false);
             RocketBought = true;

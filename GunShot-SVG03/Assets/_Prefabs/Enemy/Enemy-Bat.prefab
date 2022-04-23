@@ -212,10 +212,10 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 64
-  attackRadius: 0.15
+  attackRadius: 0.45
   posBoxCast: {fileID: 4212377787539283245}
-  boxcastX: 0.35
-  boxcastY: 0.45
+  boxcastX: 0.58
+  boxcastY: 0.96
   checkPlayerOnBox: 0
 --- !u!95 &4212377788485323072
 Animator:

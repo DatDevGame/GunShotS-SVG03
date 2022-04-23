@@ -7,6 +7,7 @@ public class StatusEnemy : MonoBehaviour
     public static StatusEnemy ins;
 
     Animator anim;
+    UIManager ui;
 
     public int currentHealth;
     protected int maxHealth;
@@ -20,6 +21,7 @@ public class StatusEnemy : MonoBehaviour
     {
         ins = this;
         anim = GetComponent<Animator>();
+        ui = FindObjectOfType<UIManager>();
     }
     protected virtual void Start()
     {
@@ -76,30 +78,40 @@ public class StatusEnemy : MonoBehaviour
     {
         if (this.gameObject.tag == "Crab")
         {
+            StatusPlayer.ins.Score += 1;
+            ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinCrab();
             anim.SetBool("CrabDead", true);
             Destroy(gameObject, 3f);
         }
         if (this.gameObject.tag == "Bat")
         {
+            StatusPlayer.ins.Score += 2;
+            ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinBat();
             anim.SetBool("BatDead", true);
             Destroy(gameObject, 3f);
         }
         if (this.gameObject.tag == "Rat")
         {
+            StatusPlayer.ins.Score += 3;
+            ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinRat();
             anim.SetBool("RatDead", true);
             Destroy(gameObject, 3f);
         }
         if (this.gameObject.tag == "Golem")
         {
+            StatusPlayer.ins.Score += 4;
+            ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinGolem();
             anim.SetBool("GolemDead", true);
             Destroy(gameObject, 3f);
         }
         if (this.gameObject.tag == "GolemUp")
         {
+            StatusPlayer.ins.Score += 20;
+            ui.setScoreText("Score: "+ StatusPlayer.ins.Score);
             spawnCoinGolemUp();
             anim.SetBool("GolemUpDead", true);
             Destroy(gameObject, 3f);

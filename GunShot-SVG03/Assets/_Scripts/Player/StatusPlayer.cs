@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StatusPlayer : MonoBehaviour
 {
@@ -8,37 +9,52 @@ public class StatusPlayer : MonoBehaviour
 
     //Component
     AudioSource aus;
+    UIManager ui;
 
     //Health Player
     [SerializeField] public int currentHealth;
     [SerializeField] private int maxHealth;
+    public Slider healthSlider;
 
-    //Status Item
+    //Status Item - Score
     public int coin;
     public AudioClip soundCoin;
+    public int Score;
 
+    //Receive Dame Anim
+    public GameObject receiveDameAnim;
 
     private void Awake()
     {
         aus = GetComponent<AudioSource>();
+        ui = FindObjectOfType<UIManager>();
     }
     protected virtual void Start()
     {
+
         //SingleTon
         ins = this;
 
         //Status Player
         maxHealth = 100;
         currentHealth = maxHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
 
         //Status Item
         coin = 9900;
+        Score = 0;
 
+        //Set UIManager
+        ui.setCoinText("Coin: " + coin);
+        ui.setScoreText("Score: " + Score);
     }
 
     public void ReveiDame(int dame)
     {
         currentHealth -= dame;
+        healthSlider.value = currentHealth;
+        Instantiate(receiveDameAnim, new Vector2(transform.position.x - 0.4f, transform.position.y), Quaternion.identity);
         if (currentHealth <= 0)
         {
             playerDead();
@@ -53,6 +69,7 @@ public class StatusPlayer : MonoBehaviour
     public void ReceiveCoin(int Recoin)
     {
         coin += Recoin;
+        ui.setCoinText("Coin: " + coin);
         aus.PlayOneShot(soundCoin);
     }
 }

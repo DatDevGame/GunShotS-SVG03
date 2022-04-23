@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    
     //Bag Player
     public GameObject PanelBagPlayer;
     protected bool checkShowPanelBag;
+
+    //Score Text
+    public Text scoreText;
+
+    //Coin Text
+    public Text coinText;
     protected virtual void Start()
     {
         //Bag Player
@@ -49,6 +57,24 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
+
+    //Set Score Text
+    public virtual void setScoreText(string txt)
+    {
+        if (scoreText)
+        {
+            scoreText.text = txt;
+        }
+    }
+
+    //Set Coin Text
+    public virtual void setCoinText(string txt)
+    {
+        if (coinText)
+        {
+            coinText.text = txt;
+        }
+    }
 
 
 }
