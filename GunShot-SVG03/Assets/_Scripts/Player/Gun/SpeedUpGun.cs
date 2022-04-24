@@ -7,6 +7,7 @@ public class SpeedUpGun : MonoBehaviour
     
     protected virtual void Start()
     {
+        Destroy(gameObject, 30f);
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,7 +31,7 @@ public class SpeedUpGun : MonoBehaviour
             }
             else if (PlayerShot.ins.Rocket)
             {
-                PlayerShot.ins.timeDurationRocket = 0.15f;
+                PlayerShot.ins.timeDurationRocket = 0.20f;
             }
             Destroy(gameObject);
         }

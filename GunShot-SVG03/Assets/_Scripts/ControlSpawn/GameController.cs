@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     protected bool checkPlayerZoneCrab;
     protected int checkQuantity;
     public GameObject setActiveTrap;
+    public GameObject setActiveTrap2;
 
     public GameObject batPrefabs;
     public GameObject ratPrefabs;
@@ -43,18 +44,34 @@ public class GameController : MonoBehaviour
     protected float randYSpawn3;
     protected float randYSpawn4;
 
+    //Spawn Item Speed Up Shot
+    public GameObject ItemSpeedUpPrefabs;
+    public Transform posSpawnItemSpeedUp;
+    protected float ranXposItemSpeedUp;
+    protected float ranYposItemSpeedUp;
+    protected float timerItemSpeedUp;
+    protected float timeDurationItemSpeedUp;
+
     private void Awake()
     {
         target = GameObject.Find("Player");
         posCheckCrab = transform.Find("posCheckCrab");
         PosSpawnCrab = transform.Find("PosSpawnCrab");
+        posSpawnItemSpeedUp = transform.Find("posSpawnItemSpeedUp");
     }
 
     protected virtual void Start()
     {
+        //Spawn Item Speed Up Shot
+        timeDurationItemSpeedUp = 100f;
+        timerItemSpeedUp = timeDurationItemSpeedUp;
+        ranXposItemSpeedUp = Random.Range(-3.5f, 3.5f);
+        ranYposItemSpeedUp = Random.Range(-3.5f, 3.5f);
+
         setActiveTrap.SetActive(false);
+        setActiveTrap2.SetActive(false);
         //Time Spawn Crab
-        timeDurationCrab = 1f;
+        timeDurationCrab = 1.5f;
         timerCrab = timeDurationCrab;
         timeDurationBat = 8f;
         timerCrab = timeDurationBat;
@@ -71,13 +88,23 @@ public class GameController : MonoBehaviour
         //Spawn Enemy
         SpawnEnemyCrabMap1();
         boxCheckSpawn();
+        SpawnItemSpeedUp();
         #endregion
     }
     #region -------------------------Map-1 Game----------------------
     protected virtual void SpawnEnemyCrabMap1()
     {
-        if (checkQuantity >= 200) return;
-
+        if (checkQuantity >= 300)
+        {
+            timeDurationCrab = 1.5f;
+            setActiveTrap2.SetActive(false);
+            checkPlayerZoneCrab = false;
+            return;
+        }
+        if (checkQuantity >= 200)
+        {
+            timeDurationCrab = 0.5f;
+        }
         if (checkPlayerZoneCrab)
         {
             timerCrab -= Time.deltaTime;
@@ -117,11 +144,27 @@ public class GameController : MonoBehaviour
         {
             checkPlayerZoneCrab = true;
             setActiveTrap.SetActive(true);
+            setActiveTrap2.SetActive(true);
         }
     }
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(posCheckCrab.position, new Vector2(PosXBox, PosYBox));
+    }
+    protected virtual void SpawnItemSpeedUp()
+    {
+        if (checkPlayerZoneCrab)
+        {
+            timerItemSpeedUp -= Time.deltaTime;
+            Debug.Log(timerItemSpeedUp);
+            if (timerItemSpeedUp <= 0)
+            {
+                Instantiate(ItemSpeedUpPrefabs, new Vector2(posSpawnItemSpeedUp.position.x + ranXposItemSpeedUp, posSpawnItemSpeedUp.position.y + ranYposItemSpeedUp), Quaternion.identity);
+                ranXposItemSpeedUp = Random.Range(-3.5f, 3.5f);
+                ranYposItemSpeedUp = Random.Range(-3.5f, 3.5f);
+                timerItemSpeedUp = timeDurationItemSpeedUp;
+            }
+        }
     }
     #endregion
 

@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
 
     //Coin Text
     public Text coinText;
+
+    //Time Text Item SpeedUp
+    public Text timeItemSpeedUp;
     protected virtual void Start()
     {
         //Bag Player
@@ -74,6 +77,15 @@ public class UIManager : MonoBehaviour
         if (coinText)
         {
             coinText.text = txt;
+        }
+    }
+
+    //Set Time Text Item SpeedUp
+    public virtual void setTimeItemText(string txt)
+    {
+        if (timeItemSpeedUp)
+        {
+            timeItemSpeedUp.text = txt;
         }
     }
 }

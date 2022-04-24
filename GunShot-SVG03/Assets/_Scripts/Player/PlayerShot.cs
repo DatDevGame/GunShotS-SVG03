@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerShot : MonoBehaviour
 {
     public static PlayerShot ins;
-
+    UIManager ui;
     AudioSource aus;
     public AudioClip soundPistol;
     public AudioClip soundGlock;
@@ -25,6 +25,10 @@ public class PlayerShot : MonoBehaviour
     public GameObject posGlock;
     public bool Glock;
     public GameObject posFlame;
+    public GameObject posFlame2;
+    public GameObject posFlame3;
+    public GameObject posFlame4;
+    public GameObject posFlame5;
     public bool Flame;
     public GameObject posMachineGun;
     public bool MachineGun;
@@ -35,7 +39,7 @@ public class PlayerShot : MonoBehaviour
     private float timerPistrol;
     public float timeDurationPistrol;
 
-    //time Shot Pistrol
+    //time Shot Glock
     private float timerGlock;
     public float timeDurationGlock;
 
@@ -46,11 +50,11 @@ public class PlayerShot : MonoBehaviour
     //time Shot MachineGun
     private float timerMachineGun;
     public float timeDurationMachineGun;
+    protected int randomShot;
 
-    //time Shot MachineGun
+    //time Shot Rocket
     private float timerRocket;
     public float timeDurationRocket;
-    public Text timeItemSpeedUp;
     public GameObject showTimeItem;
 
 
@@ -63,6 +67,7 @@ public class PlayerShot : MonoBehaviour
     {
         ins = this;
         aus = GetComponent<AudioSource>();
+        ui = FindObjectOfType<UIManager>();
         showTimeItem.SetActive(false);
 
     }
@@ -90,9 +95,14 @@ public class PlayerShot : MonoBehaviour
     }
     protected virtual void Update()
     {
+        randomShot = Random.Range(1, 5);
         posGun = GameObject.Find("posGun");
         posGlock = GameObject.Find("posGlock");
         posFlame = GameObject.Find("posFlame");
+        posFlame2 = GameObject.Find("posFlame2");
+        posFlame3 = GameObject.Find("posFlame3");
+        posFlame4 = GameObject.Find("posFlame4");
+        posFlame5 = GameObject.Find("posFlame5");
         posMachineGun = GameObject.Find("posMachineGun");
         posRocket = GameObject.Find("posRocket");
 
@@ -113,8 +123,7 @@ public class PlayerShot : MonoBehaviour
         if (checkTimeEndItem)
         {
             timeEndItem -= Time.deltaTime;
-            timeItemSpeedUp.text = "" + timeEndItem;
-            Debug.Log(timeEndItem);
+            ui.setTimeItemText(""+timeEndItem);
             if (timeEndItem <= 0)
             {
                 timeDurationPistrol = 0.2f;
@@ -161,9 +170,28 @@ public class PlayerShot : MonoBehaviour
             timerFlame -= Time.deltaTime;
             if (timerFlame <= 0)
             {
+                if (randomShot == 1)
+                {
+                    Instantiate(projectilePrefabs, posFlame.transform.position, posFlame.transform.rotation);
+                }
+                else if (randomShot == 2)
+                {
+                    Instantiate(projectilePrefabs, posFlame2.transform.position, posFlame2.transform.rotation);
+                }
+                else if (randomShot == 3)
+                {
+                    Instantiate(projectilePrefabs, posFlame3.transform.position, posFlame3.transform.rotation);
+                }
+                else if (randomShot == 4)
+                {
+                    Instantiate(projectilePrefabs, posFlame4.transform.position, posFlame4.transform.rotation);
+                }
+                else
+                {
+                    Instantiate(projectilePrefabs, posFlame5.transform.position, posFlame5.transform.rotation);
+                }
                 aus.PlayOneShot(soundFlame);
                 Instantiate(firePrefabs, posFlame.transform.position, posFlame.transform.rotation);
-                Instantiate(projectilePrefabs, posFlame.transform.position, posFlame.transform.rotation);
                 timerFlame = timeDurationFlame;
             }
         }

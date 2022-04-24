@@ -13,6 +13,8 @@ TagManager:
   - ProjectileEnemy
   - Slime
   - SpeedShotItem
+  - Ground
+  - Rocket
   layers:
   - Default
   - TransparentFX

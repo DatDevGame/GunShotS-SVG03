@@ -76,9 +76,9 @@ public class BagManager : MonoBehaviour
     }
     public virtual void btnGlock()
     {
-        if (StatusPlayer.ins.coin >= 50)
+        if (StatusPlayer.ins.coin >= 300)
         {
-            StatusPlayer.ins.coin -= 50;
+            StatusPlayer.ins.coin -= 300;
             ui.setCoinText("Coin: " + StatusPlayer.ins.coin);
             aus.PlayOneShot(soundBoughtGun);
             textCoinGlock.SetActive(false);

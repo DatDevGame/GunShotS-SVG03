@@ -43,7 +43,7 @@ public class StatusPlayer : MonoBehaviour
         healthSlider.value = currentHealth;
 
         //Status Item
-        coin = 9900;
+        coin = 0;
         Score = 0;
 
         //Set UIManager

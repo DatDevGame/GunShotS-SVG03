@@ -91,5 +91,11 @@ public class ProjectileGun : MonoBehaviour
             hitEnemy.receiveDame(shotDame);
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }
