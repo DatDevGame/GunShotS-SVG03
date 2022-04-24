@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerShot : MonoBehaviour
 {
@@ -32,29 +33,38 @@ public class PlayerShot : MonoBehaviour
 
     //time Shot Pistrol
     private float timerPistrol;
-    private float timeDurationPistrol;
+    public float timeDurationPistrol;
 
     //time Shot Pistrol
     private float timerGlock;
-    private float timeDurationGlock;
+    public float timeDurationGlock;
 
     //time Shot Flame
     private float timerFlame;
-    private float timeDurationFlame;
+    public float timeDurationFlame;
 
     //time Shot MachineGun
     private float timerMachineGun;
-    private float timeDurationMachineGun;
+    public float timeDurationMachineGun;
 
     //time Shot MachineGun
     private float timerRocket;
-    private float timeDurationRocket;
+    public float timeDurationRocket;
+    public Text timeItemSpeedUp;
+    public GameObject showTimeItem;
+
+
+    //Set Time Item live
+    protected float timeEndItem;
+    protected bool checkTimeEndItem;
 
 
     private void Awake()
     {
         ins = this;
         aus = GetComponent<AudioSource>();
+        showTimeItem.SetActive(false);
+
     }
     protected virtual void Start()
     {
@@ -71,11 +81,11 @@ public class PlayerShot : MonoBehaviour
         timerFlame = timeDurationFlame;
 
         //time Shot MachineGun
-        timeDurationMachineGun = 0.1f;
+        timeDurationMachineGun = 0.15f;
         timerMachineGun = timeDurationMachineGun;
 
         //time Shot Rocket
-        timeDurationRocket = 0.15f;
+        timeDurationRocket = 0.4f;
         timerRocket = timeDurationRocket;
     }
     protected virtual void Update()
@@ -86,9 +96,37 @@ public class PlayerShot : MonoBehaviour
         posMachineGun = GameObject.Find("posMachineGun");
         posRocket = GameObject.Find("posRocket");
 
+        endTimeItem();
         Shot();
     }
-
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("SpeedShotItem"))
+        {
+            timeEndItem = 20f;
+            checkTimeEndItem = true;
+            showTimeItem.SetActive(true);
+        }
+    }
+    protected virtual void endTimeItem()
+    {
+        if (checkTimeEndItem)
+        {
+            timeEndItem -= Time.deltaTime;
+            timeItemSpeedUp.text = "" + timeEndItem;
+            Debug.Log(timeEndItem);
+            if (timeEndItem <= 0)
+            {
+                timeDurationPistrol = 0.2f;
+                timeDurationGlock = 0.1f;
+                timeDurationFlame = 0.05f;
+                timeDurationMachineGun = 0.15f;
+                timeDurationRocket = 0.4f;
+                showTimeItem.SetActive(false);
+                checkTimeEndItem = false;
+            }
+        }
+    }
     protected virtual void Shot()
     {
         //Gun Pistol

@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    //Box check Player 
+    public Transform posCheckCrab;
+    public LayerMask layer;
+    [SerializeField] private float PosXBox;
+    [SerializeField] private float PosYBox;
+
     public GameObject target;
+
     public GameObject crabPrefabs;
+    public Transform PosSpawnCrab;
+    protected bool checkPlayerZoneCrab;
+    protected int checkQuantity;
+    public GameObject setActiveTrap;
+
     public GameObject batPrefabs;
     public GameObject ratPrefabs;
     public GameObject golemPrefabs;
@@ -34,68 +46,85 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         target = GameObject.Find("Player");
+        posCheckCrab = transform.Find("posCheckCrab");
+        PosSpawnCrab = transform.Find("PosSpawnCrab");
     }
 
     protected virtual void Start()
     {
+        setActiveTrap.SetActive(false);
         //Time Spawn Crab
         timeDurationCrab = 1f;
         timerCrab = timeDurationCrab;
         timeDurationBat = 8f;
         timerCrab = timeDurationBat;
-        timeDurationRat = 5f;
+        timeDurationRat = 15f;
         timerRat = timeDurationRat;
+        timeDurationGolem = 20f;
+        timerGolem = timeDurationGolem;
 
     }
     protected virtual void Update()
     {
         #region Set Spawn Time And Pos Random
         randomSpawn = Random.Range(1, 5);
-        randXSpawn = Random.Range(-20f, -10f);
-        randXSpawn2 = Random.Range(10f, 20f);
-        randYSpawn = Random.Range(-20f, -10f);
-        randYSpawn2 = Random.Range(10f, 20f);
-
-        randXSpawn3 = Random.Range(-20f, -10f);
-        randXSpawn4 = Random.Range(10f, 20f);
-        randYSpawn3 = Random.Range(20f,10f);
-        randYSpawn4 = Random.Range(-10f, -20f);
-
         //Spawn Enemy
-        SpawnEnemyCrab();
-        SpawnEnemyBat();
-        SpawnEnemyRat();
-        SpawnEnemyGolem();
+        SpawnEnemyCrabMap1();
+        boxCheckSpawn();
         #endregion
     }
-
-    protected virtual void SpawnEnemyCrab()
+    #region -------------------------Map-1 Game----------------------
+    protected virtual void SpawnEnemyCrabMap1()
     {
-        timerCrab -= Time.deltaTime;
-        if (timerCrab <= 0)
+        if (checkQuantity >= 200) return;
+
+        if (checkPlayerZoneCrab)
         {
-            if (randomSpawn == 1)
+            timerCrab -= Time.deltaTime;
+            if (timerCrab <= 0)
             {
-                Instantiate(crabPrefabs, new Vector2(target.transform.position.x + randXSpawn, target.transform.position.y + randYSpawn), Quaternion.identity);
-                timerCrab = timeDurationCrab;
-            }
-            else if(randomSpawn == 2)
-            {
-                Instantiate(crabPrefabs, new Vector2(target.transform.position.x + randXSpawn2, target.transform.position.y + randYSpawn2), Quaternion.identity);
-                timerCrab = timeDurationCrab;
-            }
-            else if (randomSpawn == 3)
-            {
-                Instantiate(crabPrefabs, new Vector2(target.transform.position.x + randXSpawn3, target.transform.position.y + randYSpawn3), Quaternion.identity);
-                timerCrab = timeDurationCrab;
-            }
-            else if (randomSpawn == 4)
-            {
-                Instantiate(crabPrefabs, new Vector2(target.transform.position.x + randXSpawn4, target.transform.position.y + randYSpawn4), Quaternion.identity);
-                timerCrab = timeDurationCrab;
+                if (randomSpawn == 1)
+                {
+                    Instantiate(crabPrefabs, new Vector2(PosSpawnCrab.position.x, PosSpawnCrab.position.y + 1f), Quaternion.identity);
+                    checkQuantity++;
+                    timerCrab = timeDurationCrab;
+                }
+                else if (randomSpawn == 2)
+                {
+                    Instantiate(crabPrefabs, new Vector2(PosSpawnCrab.position.x, PosSpawnCrab.position.y + 0.5f), Quaternion.identity);
+                    checkQuantity++;
+                    timerCrab = timeDurationCrab;
+                }
+                else if (randomSpawn == 3)
+                {
+                    Instantiate(crabPrefabs, new Vector2(PosSpawnCrab.position.x, PosSpawnCrab.position.y - 0.5f), Quaternion.identity);
+                    checkQuantity++;
+                    timerCrab = timeDurationCrab;
+                }
+                else if (randomSpawn == 4)
+                {
+                    Instantiate(crabPrefabs, new Vector2(PosSpawnCrab.position.x, PosSpawnCrab.position.y - 1f), Quaternion.identity);
+                    checkQuantity++;
+                    timerCrab = timeDurationCrab;
+                }
             }
         }
     }
+    protected virtual void boxCheckSpawn()
+    {
+        RaycastHit2D CheckPlayer = Physics2D.BoxCast(posCheckCrab.position, new Vector2(PosXBox, PosYBox), 0f, Vector2.right, 0f, layer);
+        if (CheckPlayer.collider != null)
+        {
+            checkPlayerZoneCrab = true;
+            setActiveTrap.SetActive(true);
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(posCheckCrab.position, new Vector2(PosXBox, PosYBox));
+    }
+    #endregion
+
     protected virtual void SpawnEnemyBat()
     {
         if (StatusPlayer.ins.Score < 50) return;

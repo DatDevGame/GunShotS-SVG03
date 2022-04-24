@@ -28,7 +28,7 @@ public class EnemyMoveGeneral : MonoBehaviour
     {
         if (this.gameObject.tag == "Crab")
         {
-            moveSpeed = 1f;
+            moveSpeed = 1.5f;
         }
 
         if (this.gameObject.tag == "Bat")

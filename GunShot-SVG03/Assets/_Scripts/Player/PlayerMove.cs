@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    Animator anim;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float directionMove;
@@ -11,7 +12,12 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float pressVertical;
     Vector2 vertical = new Vector2();
     private bool facingRight;
-    // Start is called before the first frame update
+
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Start()
     {
         

@@ -31,6 +31,7 @@ public class StatusPlayer : MonoBehaviour
     }
     protected virtual void Start()
     {
+        transform.localScale = new Vector3(-1f, 1f, 1f);
 
         //SingleTon
         ins = this;

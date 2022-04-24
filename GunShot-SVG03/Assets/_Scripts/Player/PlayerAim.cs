@@ -34,12 +34,12 @@ public class PlayerAim : MonoBehaviour
 
         if (transform.eulerAngles.y == 0)
         {
-            player.transform.localScale = new Vector3(-5f, 5f, 5);
+            player.transform.localScale = new Vector3(-5f, 5f, 5f);
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else if (transform.eulerAngles.y == 180 || transform.eulerAngles.y == -180)
         {
-            player.transform.localScale = new Vector3(5f, 5f, 5);
+            player.transform.localScale = new Vector3(5f, 5f, 5f);
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
 

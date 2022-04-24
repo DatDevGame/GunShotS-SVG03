@@ -11,6 +11,8 @@ public class CoinFollowPlayer : MonoBehaviour
     {
         target = GameObject.Find("Player");
         speed = 5f;
+
+        Destroy(this.gameObject, 20f);
     }
     protected virtual void Update()
     {

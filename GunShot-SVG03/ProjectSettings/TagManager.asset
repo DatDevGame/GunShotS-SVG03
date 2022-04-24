@@ -12,6 +12,7 @@ TagManager:
   - ProjectilePlayer
   - ProjectileEnemy
   - Slime
+  - SpeedShotItem
   layers:
   - Default
   - TransparentFX

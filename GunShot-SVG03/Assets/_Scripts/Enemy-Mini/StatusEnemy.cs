@@ -32,7 +32,7 @@ public class StatusEnemy : MonoBehaviour
 
         if (this.gameObject.tag == "Crab")
         {
-            maxHealth = 5;
+            maxHealth = 10;
             currentHealth = maxHealth;
         }
         if (this.gameObject.tag == "Bat")
