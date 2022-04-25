@@ -118,7 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillPrefabs: {fileID: 0}
-  skillTwoPreofabs: {fileID: 0}
+  circleRedPrefabs: {fileID: 0}
+  skillTwoPrefabs: {fileID: 0}
+  posSkillTwo: {fileID: 0}
 --- !u!114 &1647519584188437532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +147,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.17822707}

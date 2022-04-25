@@ -16,6 +16,9 @@ public class StatusEnemy : MonoBehaviour
     protected int randomCoinSpawn;
     protected float randXposCoin;
     protected float randYposCoin;
+    //Spawn Cristal
+    public GameObject CristalPrefabs;
+    protected int randCristal;
 
     private void Awake()
     {
@@ -25,6 +28,8 @@ public class StatusEnemy : MonoBehaviour
     }
     protected virtual void Start()
     {
+        //Random CrisTal 5/100%
+        randCristal = Random.Range(1, 100);
         #region RanDomCoin
         //random Coin
         randomCoinSpawn = Random.Range(1, 5);
@@ -81,6 +86,7 @@ public class StatusEnemy : MonoBehaviour
             StatusPlayer.ins.Score += 1;
             ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinCrab();
+            spawnCristal();
             anim.SetBool("CrabDead", true);
             Destroy(gameObject, 3f);
         }
@@ -89,6 +95,7 @@ public class StatusEnemy : MonoBehaviour
             StatusPlayer.ins.Score += 2;
             ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinBat();
+            spawnCristal();
             anim.SetBool("BatDead", true);
             Destroy(gameObject, 3f);
         }
@@ -97,6 +104,7 @@ public class StatusEnemy : MonoBehaviour
             StatusPlayer.ins.Score += 3;
             ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinRat();
+            spawnCristal();
             anim.SetBool("RatDead", true);
             Destroy(gameObject, 3f);
         }
@@ -105,6 +113,7 @@ public class StatusEnemy : MonoBehaviour
             StatusPlayer.ins.Score += 4;
             ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinGolem();
+            spawnCristal();
             anim.SetBool("GolemDead", true);
             Destroy(gameObject, 3f);
         }
@@ -115,6 +124,17 @@ public class StatusEnemy : MonoBehaviour
             spawnCoinGolemUp();
             anim.SetBool("GolemUpDead", true);
             Destroy(gameObject, 3f);
+
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x + 1f, transform.position.y + 1f), Quaternion.identity);
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x - 1f, transform.position.y + 1f), Quaternion.identity);
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x + 1f, transform.position.y - 1f), Quaternion.identity);
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x - 1f, transform.position.y - 1f), Quaternion.identity);
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x + 2f, transform.position.y + 2f), Quaternion.identity);
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x + 2f, transform.position.y - 2f), Quaternion.identity);
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x - 2f, transform.position.y + 2f), Quaternion.identity);
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x - 2f, transform.position.y - 2f), Quaternion.identity);
+            Instantiate(CristalPrefabs, new Vector2(transform.position.x + 2.3f, transform.position.y - 2.3f), Quaternion.identity);
         }
         if (this.gameObject.tag == "Slime")
         {
@@ -581,5 +601,11 @@ public class StatusEnemy : MonoBehaviour
         }
     }
 
-
+    public virtual void spawnCristal()
+    {
+        if (randCristal <= 5)
+        {
+            Instantiate(CristalPrefabs, transform.position, Quaternion.identity);
+        }
+    }
 }

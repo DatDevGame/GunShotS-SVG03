@@ -75,5 +75,11 @@ public class StatusPlayer : MonoBehaviour
         ui.setCoinText("Coin: " + coin);
         aus.PlayOneShot(soundCoin);
     }
+    public void ReceiveCristal(int ReCristal)
+    {
+        Cristal += ReCristal;
+        ui.setCristalText("" + Cristal);
+        aus.PlayOneShot(soundCoin);
+    }
 }
 
