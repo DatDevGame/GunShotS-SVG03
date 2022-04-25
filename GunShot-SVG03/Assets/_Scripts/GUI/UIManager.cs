@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager ins;
     
     //Bag Player
     public GameObject PanelBagPlayer;
@@ -18,6 +19,10 @@ public class UIManager : MonoBehaviour
     public Text timeItemSpeedUp;
     public Text MedicalText;
 
+    private void Awake()
+    {
+        ins = this;
+    }
     protected virtual void Start()
     {
         //Bag Player

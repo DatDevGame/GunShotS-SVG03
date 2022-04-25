@@ -8,6 +8,7 @@ public class StatusEnemy : MonoBehaviour
 
     Animator anim;
     UIManager ui;
+    MissionPlayer mission;
 
     public int currentHealth;
     protected int maxHealth;
@@ -19,6 +20,9 @@ public class StatusEnemy : MonoBehaviour
     //Spawn Cristal
     public GameObject CristalPrefabs;
     protected int randCristal;
+
+    //Set CheckQuantilyCrab for MissionPlayer
+
 
     private void Awake()
     {
@@ -83,6 +87,11 @@ public class StatusEnemy : MonoBehaviour
     {
         if (this.gameObject.tag == "Crab")
         {
+            //Check Mission 1  - Map 1
+            MissionPlayer.ins.checkQuantilyCrabDead += 1;
+            MissionPlayer.ins.TextMission1(""+ MissionPlayer.ins.checkQuantilyCrabDead);
+
+
             StatusPlayer.ins.Score += 1;
             ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinCrab();

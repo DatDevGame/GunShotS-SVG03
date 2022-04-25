@@ -38,7 +38,7 @@ public class Mouse : MonoBehaviour
             {
                 if (check.collider.tag == "Mission1")
                 {
-                    if (distance <= 0.5f)
+                    if (distance <= 1f)
                     {
                         checkMission1 = true;
                         MissionPlayer.ins.btnMission1.SetActive(true);

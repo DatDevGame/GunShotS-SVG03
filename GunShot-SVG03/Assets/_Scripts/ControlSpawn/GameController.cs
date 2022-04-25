@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour
         setActiveTrap.SetActive(false);
         setActiveTrap2.SetActive(false);
         //Time Spawn Crab
-        timeDurationCrab = 1.5f;
+        timeDurationCrab = 0.1f;
         timerCrab = timeDurationCrab;
         timeDurationBat = 8f;
         timerCrab = timeDurationBat;
@@ -123,7 +123,7 @@ public class GameController : MonoBehaviour
         }
         if (checkQuantity >= 200)
         {
-            timeDurationCrab = 0.5f;
+            timeDurationCrab = 0.1f;
         }
         if (checkPlayerZoneCrab)
         {
