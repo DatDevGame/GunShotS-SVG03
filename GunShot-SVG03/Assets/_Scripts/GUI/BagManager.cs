@@ -76,9 +76,9 @@ public class BagManager : MonoBehaviour
     }
     public virtual void btnGlock()
     {
-        if (StatusPlayer.ins.coin >= 300)
+        if (StatusPlayer.ins.coin >= 350)
         {
-            StatusPlayer.ins.coin -= 300;
+            StatusPlayer.ins.coin -= 350;
             ui.setCoinText("Coin: " + StatusPlayer.ins.coin);
             aus.PlayOneShot(soundBoughtGun);
             textCoinGlock.SetActive(false);
@@ -264,5 +264,44 @@ public class BagManager : MonoBehaviour
         PlayerShot.ins.Flame = false;
         PlayerShot.ins.MachineGun = false;
         PlayerShot.ins.Rocket = true;
+    }
+
+    public virtual void BuyBtnMedical()
+    {
+        if (StatusPlayer.ins.Cristal >= 10)
+        {
+            StatusPlayer.ins.Cristal -= 10;
+            StatusPlayer.ins.Medical += 1;
+            ui.setMedicalText("X: " + StatusPlayer.ins.Medical);
+            ui.setCristalText(" " + StatusPlayer.ins.Cristal);
+        }
+        else
+        {
+            aus.PlayOneShot(soundNotMoney);
+        }
+    }
+    public virtual void UseBtnMedical()
+    {
+        if (StatusPlayer.ins.currentHealth >= 100)
+        {
+            aus.PlayOneShot(soundNotMoney);
+            return;
+        }
+
+        if (StatusPlayer.ins.Medical >= 1)
+        {
+            StatusPlayer.ins.Medical -= 1;
+            StatusPlayer.ins.currentHealth += 50;
+            if (StatusPlayer.ins.currentHealth >= 100)
+            {
+                StatusPlayer.ins.currentHealth = 100;
+            }
+            StatusPlayer.ins.healthSlider.value = StatusPlayer.ins.currentHealth;
+            ui.setMedicalText("X: " + StatusPlayer.ins.Medical);
+        }
+        else
+        {
+            aus.PlayOneShot(soundNotMoney);
+        }
     }
 }

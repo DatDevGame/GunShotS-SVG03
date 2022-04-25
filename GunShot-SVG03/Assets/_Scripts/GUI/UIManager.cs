@@ -11,14 +11,13 @@ public class UIManager : MonoBehaviour
     public GameObject PanelBagPlayer;
     protected bool checkShowPanelBag;
 
-    //Score Text
+    //Item text - Score
     public Text scoreText;
-
-    //Coin Text
     public Text coinText;
-
-    //Time Text Item SpeedUp
+    public Text cristalText;
     public Text timeItemSpeedUp;
+    public Text MedicalText;
+
     protected virtual void Start()
     {
         //Bag Player
@@ -62,7 +61,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    //Set Score Text
+    //Set Item - Score Text
     public virtual void setScoreText(string txt)
     {
         if (scoreText)
@@ -70,8 +69,6 @@ public class UIManager : MonoBehaviour
             scoreText.text = txt;
         }
     }
-
-    //Set Coin Text
     public virtual void setCoinText(string txt)
     {
         if (coinText)
@@ -79,8 +76,20 @@ public class UIManager : MonoBehaviour
             coinText.text = txt;
         }
     }
-
-    //Set Time Text Item SpeedUp
+    public virtual void setCristalText(string txt)
+    {
+        if (cristalText)
+        {
+            cristalText.text = txt;
+        }
+    }
+    public virtual void setMedicalText(string txt)
+    {
+        if (MedicalText)
+        {
+            MedicalText.text = txt;
+        }
+    }
     public virtual void setTimeItemText(string txt)
     {
         if (timeItemSpeedUp)

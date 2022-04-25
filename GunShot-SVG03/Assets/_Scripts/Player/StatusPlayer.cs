@@ -20,6 +20,8 @@ public class StatusPlayer : MonoBehaviour
     public int coin;
     public AudioClip soundCoin;
     public int Score;
+    public int Cristal;
+    public int Medical;
 
     //Receive Dame Anim
     public GameObject receiveDameAnim;
@@ -42,13 +44,13 @@ public class StatusPlayer : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = currentHealth;
 
-        //Status Item
-        coin = 0;
-        Score = 0;
+       
 
         //Set UIManager
         ui.setCoinText("Coin: " + coin);
         ui.setScoreText("Score: " + Score);
+        ui.setCristalText("" + Cristal);
+        ui.setMedicalText("X: "+Medical);
     }
 
     public void ReveiDame(int dame)
