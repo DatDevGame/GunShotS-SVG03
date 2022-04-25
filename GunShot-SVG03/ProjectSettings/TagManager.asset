@@ -15,6 +15,7 @@ TagManager:
   - SpeedShotItem
   - Ground
   - Rocket
+  - Mission1
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Mission
   - 
   - 
   - 

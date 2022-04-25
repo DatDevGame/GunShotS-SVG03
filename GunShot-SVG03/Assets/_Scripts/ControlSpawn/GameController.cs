@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController ins;
+
     //Box check Player 
     public Transform posCheckCrab;
     public LayerMask layer;
@@ -52,16 +54,33 @@ public class GameController : MonoBehaviour
     protected float timerItemSpeedUp;
     protected float timeDurationItemSpeedUp;
 
+    //Spawn Item Medical
+    public GameObject MedicalPrefabs;
+    public Transform posSpawnMedical;
+    protected float randXPosMedical;
+    protected float randYPosMedical;
+    protected float timeSpawnMedical;
+
+
+    //Set NPC
+    public GameObject effectMission;
     private void Awake()
     {
+        ins = this;
         target = GameObject.Find("Player");
         posCheckCrab = transform.Find("posCheckCrab");
         PosSpawnCrab = transform.Find("PosSpawnCrab");
         posSpawnItemSpeedUp = transform.Find("posSpawnItemSpeedUp");
+        posSpawnMedical = transform.Find("posSpawnMedical");
     }
 
     protected virtual void Start()
     {
+        //Spawn Item Medical
+        timeSpawnMedical = Random.Range(200f, 250f);
+        randXPosMedical = Random.Range(-3.5f, 3.5f);
+        randYPosMedical = Random.Range(-3.5f, 3.5f);
+
         //Spawn Item Speed Up Shot
         timeDurationItemSpeedUp = 100f;
         timerItemSpeedUp = timeDurationItemSpeedUp;
@@ -89,6 +108,7 @@ public class GameController : MonoBehaviour
         SpawnEnemyCrabMap1();
         boxCheckSpawn();
         SpawnItemSpeedUp();
+        SpawnItemMedical();
         #endregion
     }
     #region -------------------------Map-1 Game----------------------
@@ -163,6 +183,19 @@ public class GameController : MonoBehaviour
                 ranXposItemSpeedUp = Random.Range(-3.5f, 3.5f);
                 ranYposItemSpeedUp = Random.Range(-3.5f, 3.5f);
                 timerItemSpeedUp = timeDurationItemSpeedUp;
+            }
+        }
+    }
+
+    protected virtual void SpawnItemMedical()
+    {
+        if (checkPlayerZoneCrab)
+        {
+            timeSpawnMedical -= Time.deltaTime;
+            if (timeSpawnMedical <= 0)
+            {
+                Instantiate(MedicalPrefabs, new Vector2(posSpawnMedical.position.x + randXPosMedical, posSpawnMedical.position.y + randYPosMedical), Quaternion.identity);
+                timeSpawnMedical = Random.Range(200f, 250f);
             }
         }
     }
