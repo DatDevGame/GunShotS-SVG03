@@ -45,7 +45,7 @@ public class StatusEnemy : MonoBehaviour
         }
         if (this.gameObject.tag == "Bat")
         {
-            maxHealth = 20;
+            maxHealth = 5;
             currentHealth = maxHealth;
         }
         if (this.gameObject.tag == "Golem")

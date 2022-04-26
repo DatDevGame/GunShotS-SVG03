@@ -16,6 +16,7 @@ TagManager:
   - Ground
   - Rocket
   - NPCshowMission
+  - TriggerSpawnBat
   layers:
   - Default
   - TransparentFX
