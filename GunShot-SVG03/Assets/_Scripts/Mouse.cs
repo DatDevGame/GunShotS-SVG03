@@ -36,14 +36,12 @@ public class Mouse : MonoBehaviour
         {
             if (check.collider != null)
             {
-                if (check.collider.tag == "Mission1")
+                if (check.collider.tag == "NPCshowMission")
                 {
                     if (distance <= 1f)
                     {
-                        checkMission1 = true;
-                        MissionPlayer.ins.btnMission1.SetActive(true);
-                        MissionPlayer.ins.showMission1.SetActive(true);
-                        GameController.ins.effectMission.SetActive(false);
+                        MissionPlayer.ins.btnMission.SetActive(true);
+                        MissionPlayer.ins.showMissionTable.SetActive(true);
                         Time.timeScale = 0f;
                     }     
                 }

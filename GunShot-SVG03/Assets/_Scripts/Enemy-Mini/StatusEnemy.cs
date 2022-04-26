@@ -8,7 +8,6 @@ public class StatusEnemy : MonoBehaviour
 
     Animator anim;
     UIManager ui;
-    MissionPlayer mission;
 
     public int currentHealth;
     protected int maxHealth;

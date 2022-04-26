@@ -68,6 +68,9 @@ public class BagManager : MonoBehaviour
             PistolBought = true;
             btnBuyPistol.SetActive(false);
             btnUsePistol.SetActive(true);
+
+            //Mission 0 - Map 1
+            MissionPlayer.ins.btnMission0.SetActive(true);
         }
         else 
         {

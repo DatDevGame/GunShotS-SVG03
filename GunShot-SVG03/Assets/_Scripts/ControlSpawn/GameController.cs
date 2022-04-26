@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour
     public GameObject crabPrefabs;
     public Transform PosSpawnCrab;
     protected bool checkPlayerZoneCrab;
-    protected int checkQuantity;
     public GameObject setActiveTrap;
     public GameObject setActiveTrap2;
 
@@ -90,7 +89,7 @@ public class GameController : MonoBehaviour
         setActiveTrap.SetActive(false);
         setActiveTrap2.SetActive(false);
         //Time Spawn Crab
-        timeDurationCrab = 0.1f;
+        timeDurationCrab = 1.5f;
         timerCrab = timeDurationCrab;
         timeDurationBat = 8f;
         timerCrab = timeDurationBat;
@@ -109,21 +108,22 @@ public class GameController : MonoBehaviour
         boxCheckSpawn();
         SpawnItemSpeedUp();
         SpawnItemMedical();
+        DisableIconNpc();
         #endregion
     }
     #region -------------------------Map-1 Game----------------------
     protected virtual void SpawnEnemyCrabMap1()
     {
-        if (checkQuantity >= 300)
+        if (MissionPlayer.ins.checkQuantilyCrabDead >= 500)
         {
             timeDurationCrab = 1.5f;
             setActiveTrap2.SetActive(false);
             checkPlayerZoneCrab = false;
             return;
         }
-        if (checkQuantity >= 200)
+        if (MissionPlayer.ins.checkQuantilyCrabDead >= 200)
         {
-            timeDurationCrab = 0.1f;
+            timeDurationCrab = 0.5f;
         }
         if (checkPlayerZoneCrab)
         {
@@ -133,25 +133,21 @@ public class GameController : MonoBehaviour
                 if (randomSpawn == 1)
                 {
                     Instantiate(crabPrefabs, new Vector2(PosSpawnCrab.position.x, PosSpawnCrab.position.y + 1f), Quaternion.identity);
-                    checkQuantity++;
                     timerCrab = timeDurationCrab;
                 }
                 else if (randomSpawn == 2)
                 {
                     Instantiate(crabPrefabs, new Vector2(PosSpawnCrab.position.x, PosSpawnCrab.position.y + 0.5f), Quaternion.identity);
-                    checkQuantity++;
                     timerCrab = timeDurationCrab;
                 }
                 else if (randomSpawn == 3)
                 {
                     Instantiate(crabPrefabs, new Vector2(PosSpawnCrab.position.x, PosSpawnCrab.position.y - 0.5f), Quaternion.identity);
-                    checkQuantity++;
                     timerCrab = timeDurationCrab;
                 }
                 else if (randomSpawn == 4)
                 {
                     Instantiate(crabPrefabs, new Vector2(PosSpawnCrab.position.x, PosSpawnCrab.position.y - 1f), Quaternion.identity);
-                    checkQuantity++;
                     timerCrab = timeDurationCrab;
                 }
             }
@@ -199,7 +195,20 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
+    protected virtual void DisableIconNpc()
+    {
+        if (MissionPlayer.ins.checkClickBtnMission0)
+        {
+            effectMission.SetActive(false);
+        }
+
+    }
     #endregion
+
+
+
+
 
     protected virtual void SpawnEnemyBat()
     {

@@ -15,7 +15,7 @@ TagManager:
   - SpeedShotItem
   - Ground
   - Rocket
-  - Mission1
+  - NPCshowMission
   layers:
   - Default
   - TransparentFX

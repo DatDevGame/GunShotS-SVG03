@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     
     //Bag Player
     public GameObject PanelBagPlayer;
-    protected bool checkShowPanelBag;
+    public bool checkShowPanelBag;
 
     //Item text - Score
     public Text scoreText;
@@ -38,6 +38,9 @@ public class UIManager : MonoBehaviour
     //Use Button
     public void showPanelBagPlayer()
     {
+        //Table Mission showing not open Bag
+        if (MissionPlayer.ins.TableMissionShowing) return;
+
         checkShowPanelBag = true;
         PanelBagPlayer.SetActive(true);
         Time.timeScale = 0f;
@@ -53,6 +56,9 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B) && !checkShowPanelBag)
         {
+            //Table Mission showing not open Bag
+            if (MissionPlayer.ins.TableMissionShowing) return;
+
             checkShowPanelBag = true;
             PanelBagPlayer.SetActive(true);
             Time.timeScale = 0f;
@@ -101,5 +107,10 @@ public class UIManager : MonoBehaviour
         {
             timeItemSpeedUp.text = txt;
         }
+    }
+
+    public void loadcene()
+    {
+        SceneManager.LoadScene("Map-2");
     }
 }
