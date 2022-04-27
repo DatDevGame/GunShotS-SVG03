@@ -88,7 +88,11 @@ public class StatusEnemy : MonoBehaviour
         {
             //Check Mission 1  - Map 1
             MissionPlayer.ins.checkQuantilyCrabDead += 1;
+            MissionPlayer.ins.CheckQuantiylyCrabMission2 += 1;
+            MissionPlayer.ins.CheckQuantiylyBatMission2 += 1;
             MissionPlayer.ins.TextMission1(""+ MissionPlayer.ins.checkQuantilyCrabDead);
+            MissionPlayer.ins.TextMission2QuantilyCrab(""+ MissionPlayer.ins.CheckQuantiylyCrabMission2);
+            MissionPlayer.ins.TextMission2QuantilyBat(""+ MissionPlayer.ins.CheckQuantiylyBatMission2);
 
 
             StatusPlayer.ins.Score += 1;

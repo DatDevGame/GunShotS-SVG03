@@ -25,6 +25,14 @@ public class MissionPlayer : MonoBehaviour
     public GameObject CheckbtnRewardMission1;
     public GameObject Mission1Close;
 
+    //Mission 2 - Map 1
+    public GameObject Mission2;
+    public GameObject showBtnMission2;
+    public Text TextCheckQuantiylyCrabMission2;
+    public Text TextCheckQuantiylyBatMission2;
+    public int CheckQuantiylyCrabMission2;
+    public int CheckQuantiylyBatMission2;
+
 
     private void Awake()
     {
@@ -43,6 +51,9 @@ public class MissionPlayer : MonoBehaviour
 
         //Mission 1 - Map 1
         showBtnRewardMission1();
+
+        //Missuon 2 - Map 2
+        showBtnRewardMission2();
     }
 
 
@@ -108,6 +119,7 @@ public class MissionPlayer : MonoBehaviour
         Mission1Close.SetActive(false);
         StatusPlayer.ins.Cristal += 20;
         UIManager.ins.setCristalText(""+StatusPlayer.ins.Cristal);
+        Mission2.SetActive(true);
     }
     protected virtual void showBtnRewardMission1()
     {
@@ -120,5 +132,40 @@ public class MissionPlayer : MonoBehaviour
             CheckbtnRewardMission1.SetActive(false);
         }
     }
+    #endregion
+
+    #region Mission 2 - Map 1
+    public virtual void TextMission2QuantilyCrab(string txt)
+    {
+        if (TextCheckQuantiylyCrabMission2)
+        {
+            TextCheckQuantiylyCrabMission2.text = txt;
+        }
+    }
+    public virtual void TextMission2QuantilyBat(string txt)
+    {
+        if (TextCheckQuantiylyBatMission2)
+        {
+            TextCheckQuantiylyBatMission2.text = txt;
+        }
+    }
+    public virtual void btnRewardMission2()
+    {
+        StatusPlayer.ins.Cristal += 50;
+        UIManager.ins.setCristalText(""+StatusPlayer.ins.Cristal);
+        Mission2.SetActive(false);
+    }
+    public virtual void showBtnRewardMission2()
+    {
+        if (CheckQuantiylyCrabMission2 >= 200 && CheckQuantiylyBatMission2 >= 500)
+        {
+            showBtnMission2.SetActive(true);
+        }
+        else if (CheckQuantiylyCrabMission2 < 200 && CheckQuantiylyBatMission2 <= 500)
+        {
+            showBtnMission2.SetActive(false);
+        }
+    }
+
     #endregion
 }

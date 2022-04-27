@@ -76,9 +76,6 @@ public class GameController : MonoBehaviour
         ins = this;
         target = GameObject.Find("Player");
         posCheckCrab = transform.Find("posCheckCrab");
-        PosSpawnCrab = transform.Find("PosSpawnCrab");
-        posSpawnItemSpeedUp = transform.Find("posSpawnItemSpeedUp");
-        posSpawnMedical = transform.Find("posSpawnMedical");
     }
 
     protected virtual void Start()
@@ -237,87 +234,187 @@ public class GameController : MonoBehaviour
                 {
                     if (spawnRandom == 1)
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 2f), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 2f), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 2f), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if(checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 2f), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
                     }
                     else if (spawnRandom == 2)
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 1f), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 1f), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 1f), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if (checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 1f), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
                     }
                     else if (spawnRandom == 3)
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if (checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
                     }
                     else if (spawnRandom == 4)
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 1f), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 1f), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 1f), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if (checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 1f), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
                     }
                     else
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 2f), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 2f), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 2f), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if (checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 2f), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
                     }
                 }
                 else if(randSpawnBatAndCrab == 2)
                 {
                     if (spawnRandom == 1)
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 2f), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 2f), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 2f), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if (checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 2f), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
 
                     }
                     else if (spawnRandom == 2)
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 1f), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 1f), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
+                        randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 1f), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if (checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 1f), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
                     }
                     else if (spawnRandom == 3)
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if (checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
                     }
                     else if (spawnRandom == 4)
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 1f), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 1f), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 1f), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if (checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 1f), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
                     }
                     else
                     {
-                        Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 2f), Quaternion.identity);
-                        Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 2f), Quaternion.identity);
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
+                        if (checkQuantilyCrabMission2 < 200)
+                        {
+                            if (checkQuantilyCrabMission2 >= 200) return;
+                            Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 2f), Quaternion.identity);
+                            checkQuantilyCrabMission2++;
+                        }
+                        if (checkQuantilyBatMission2 < 300)
+                        {
+                            if (checkQuantilyBatMission2 >= 500) return;
+                            Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 2f), Quaternion.identity);
+                            checkQuantilyBatMission2++;
+                        }
                     }
                 }
             }
@@ -345,7 +442,8 @@ public class GameController : MonoBehaviour
             {
                 if (checkQuantilyBatMission2 >= 500) return;
                 Instantiate(ItemSpeedUpPrefabs, new Vector2(randXposSpawnItemSpeedAndMedical, randYposSpawnItemSpeedAndMedical), Quaternion.identity);
-                checkQuantilyBatMission2++;
+                randXposSpawnItemSpeedAndMedical = Random.Range(35f, 65f);
+                randYposSpawnItemSpeedAndMedical = Random.Range(-66f, -59f);
                 timerItemSpeedUp = timeDurationItemSpeedUp;
             }
 
@@ -354,6 +452,8 @@ public class GameController : MonoBehaviour
             {
                 if (checkQuantilyCrabMission2 >= 300) return;
                 Instantiate(MedicalPrefabs, new Vector2(randXposSpawnItemSpeedAndMedical, randYposSpawnItemSpeedAndMedical), Quaternion.identity);
+                randXposSpawnItemSpeedAndMedical = Random.Range(35f, 65f);
+                randYposSpawnItemSpeedAndMedical = Random.Range(-66f, -59f);
                 checkQuantilyCrabMission2++;
                 timeSpawnMedical = Random.Range(200f, 250f);
             }
