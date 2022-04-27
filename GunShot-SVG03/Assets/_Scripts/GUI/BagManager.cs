@@ -8,6 +8,9 @@ public class BagManager : MonoBehaviour
     //Set UIManager
     UIManager ui;
 
+    //Get Pos Player
+    public GameObject target;
+
     //Set Btn Buy
     public GameObject btnBuyPistol;
     public GameObject btnBuyGlock;
@@ -45,10 +48,15 @@ public class BagManager : MonoBehaviour
     public AudioClip soundNotMoney;
     public AudioClip soundBoughtGun;
 
+    //SpeedItem Prefabs When Use
+    public GameObject itemSpeedUpPrefabs;
+    protected int QuantilyItemSpeedup;
+
     private void Awake()
     {
         aus = GetComponent<AudioSource>();
         ui = FindObjectOfType<UIManager>();
+        target = GameObject.Find("Player");
     }
     protected virtual void Start()
     {
@@ -301,6 +309,33 @@ public class BagManager : MonoBehaviour
             }
             StatusPlayer.ins.healthSlider.value = StatusPlayer.ins.currentHealth;
             ui.setMedicalText("X: " + StatusPlayer.ins.Medical);
+        }
+        else
+        {
+            aus.PlayOneShot(soundNotMoney);
+        }
+    }
+
+    public virtual void UseBtnSpeedUp()
+    {
+        if (QuantilyItemSpeedup >= 1)
+        {
+            QuantilyItemSpeedup -= 1;
+            Instantiate(itemSpeedUpPrefabs, target.transform.position, Quaternion.identity);
+            UIManager.ins.setItemSpeedText("X: " + QuantilyItemSpeedup);
+        }
+        else
+        {
+            aus.PlayOneShot(soundNotMoney);
+        }
+    }
+    public virtual void BuyBtnSpeedUp()
+    {
+        if (StatusPlayer.ins.Cristal >= 25)
+        {
+            StatusPlayer.ins.Cristal -= 25;
+            QuantilyItemSpeedup += 1;
+            UIManager.ins.setItemSpeedText("X: "+QuantilyItemSpeedup);
         }
         else
         {

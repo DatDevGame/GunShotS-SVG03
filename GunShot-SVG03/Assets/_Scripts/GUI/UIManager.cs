@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public Text cristalText;
     public Text timeItemSpeedUp;
     public Text MedicalText;
+    public Text SpeedUpText;
 
     private void Awake()
     {
@@ -106,6 +107,13 @@ public class UIManager : MonoBehaviour
         if (timeItemSpeedUp)
         {
             timeItemSpeedUp.text = txt;
+        }
+    }
+    public virtual void setItemSpeedText(string txt)
+    {
+        if (SpeedUpText)
+        {
+            SpeedUpText.text = txt;
         }
     }
 
