@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController ins;
+    AudioSource aus;
 
     //Box check Player 
     public Transform posCheckCrab;
@@ -60,6 +61,7 @@ public class GameController : MonoBehaviour
     protected float ranYposItemSpeedUp;
     protected float timerItemSpeedUp;
     protected float timeDurationItemSpeedUp;
+    public AudioClip soundHelicopterDropItem;
 
     //Spawn Item Medical
     public GameObject MedicalPrefabs;
@@ -76,6 +78,7 @@ public class GameController : MonoBehaviour
         ins = this;
         target = GameObject.Find("Player");
         posCheckCrab = transform.Find("posCheckCrab");
+        aus = GetComponent<AudioSource>();
     }
 
     protected virtual void Start()
@@ -133,6 +136,7 @@ public class GameController : MonoBehaviour
             timerItemSpeedUp -= Time.deltaTime;
             if (timerItemSpeedUp <= 0)
             {
+                aus.PlayOneShot(soundHelicopterDropItem);
                 Instantiate(ItemSpeedUpPrefabs, new Vector2(posSpawnItemSpeedUp.position.x + ranXposItemSpeedUp, posSpawnItemSpeedUp.position.y + ranYposItemSpeedUp), Quaternion.identity);
                 ranXposItemSpeedUp = Random.Range(-3.5f, 3.5f);
                 ranYposItemSpeedUp = Random.Range(-3.5f, 3.5f);
@@ -149,6 +153,7 @@ public class GameController : MonoBehaviour
             timeSpawnMedical -= Time.deltaTime;
             if (timeSpawnMedical <= 0)
             {
+                aus.PlayOneShot(soundHelicopterDropItem);
                 Instantiate(MedicalPrefabs, new Vector2(posSpawnMedical.position.x + randXPosMedical, posSpawnMedical.position.y + randYPosMedical), Quaternion.identity);
                 timeSpawnMedical = Random.Range(200f, 250f);
             }

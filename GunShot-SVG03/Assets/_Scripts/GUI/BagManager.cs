@@ -52,6 +52,7 @@ public class BagManager : MonoBehaviour
     public GameObject itemSpeedUpPrefabs;
     protected int QuantilyItemSpeedup;
 
+
     private void Awake()
     {
         aus = GetComponent<AudioSource>();
@@ -69,6 +70,9 @@ public class BagManager : MonoBehaviour
     //Set Button Buy GUI Bag Player
     public virtual void btnPistol()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
         if (StatusPlayer.ins.coin >= 0)
         {
             aus.PlayOneShot(soundBoughtGun);
@@ -87,6 +91,9 @@ public class BagManager : MonoBehaviour
     }
     public virtual void btnGlock()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
         if (StatusPlayer.ins.coin >= 350)
         {
             StatusPlayer.ins.coin -= 350;
@@ -104,6 +111,9 @@ public class BagManager : MonoBehaviour
     }
     public virtual void btnFlame()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
         if (StatusPlayer.ins.coin >= 100)
         {
             StatusPlayer.ins.coin -= 100;
@@ -122,6 +132,9 @@ public class BagManager : MonoBehaviour
     }
     public virtual void btnLazer()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
         if (StatusPlayer.ins.coin >= 200)
         {
             StatusPlayer.ins.coin -= 200;
@@ -139,6 +152,9 @@ public class BagManager : MonoBehaviour
     }
     public virtual void btnRocket()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
         if (StatusPlayer.ins.coin >= 500)
         {
             StatusPlayer.ins.coin -= 500;
@@ -159,6 +175,9 @@ public class BagManager : MonoBehaviour
 
     public virtual void UseBtnPistol()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
         //Set hiden Btn When Use
         btnUsePistol.SetActive(false);
         if(GlockBought) btnUseGlock.SetActive(true);
@@ -183,6 +202,9 @@ public class BagManager : MonoBehaviour
 
     public virtual void UseBtnGlock()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
         //Set hiden Btn When Use
         if (PistolBought) btnUsePistol.SetActive(true);
         btnUseGlock.SetActive(false);
@@ -207,6 +229,9 @@ public class BagManager : MonoBehaviour
 
     public virtual void UseBtnFlame()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
         //Set hiden Btn When Use
         if (PistolBought) btnUsePistol.SetActive(true);
         if (GlockBought) btnUseGlock.SetActive(true);
@@ -231,6 +256,9 @@ public class BagManager : MonoBehaviour
 
     public virtual void UseBtnLazer()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
         //Set hiden Btn When Use
         if (PistolBought) btnUsePistol.SetActive(true);
         if (GlockBought) btnUseGlock.SetActive(true);
@@ -255,6 +283,10 @@ public class BagManager : MonoBehaviour
 
     public virtual void UseBtnRocket()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+
+
         //Set hiden Btn When Use
         if (PistolBought) btnUsePistol.SetActive(true);
         if (GlockBought) btnUseGlock.SetActive(true);
@@ -279,6 +311,8 @@ public class BagManager : MonoBehaviour
 
     public virtual void BuyBtnMedical()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
         if (StatusPlayer.ins.Cristal >= 10)
         {
             StatusPlayer.ins.Cristal -= 10;
@@ -293,6 +327,8 @@ public class BagManager : MonoBehaviour
     }
     public virtual void UseBtnMedical()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
         if (StatusPlayer.ins.currentHealth >= 100)
         {
             aus.PlayOneShot(soundNotMoney);
@@ -318,6 +354,8 @@ public class BagManager : MonoBehaviour
 
     public virtual void UseBtnSpeedUp()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
         if (QuantilyItemSpeedup >= 1)
         {
             QuantilyItemSpeedup -= 1;
@@ -331,6 +369,8 @@ public class BagManager : MonoBehaviour
     }
     public virtual void BuyBtnSpeedUp()
     {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
         if (StatusPlayer.ins.Cristal >= 25)
         {
             StatusPlayer.ins.Cristal -= 25;
