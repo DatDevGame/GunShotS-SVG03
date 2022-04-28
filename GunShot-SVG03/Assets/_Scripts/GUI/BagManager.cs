@@ -336,6 +336,7 @@ public class BagManager : MonoBehaviour
             StatusPlayer.ins.Cristal -= 25;
             QuantilyItemSpeedup += 1;
             UIManager.ins.setItemSpeedText("X: "+QuantilyItemSpeedup);
+            UIManager.ins.setCristalText("X: "+ StatusPlayer.ins.Cristal);
         }
         else
         {

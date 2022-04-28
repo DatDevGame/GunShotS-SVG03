@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
 
         setActiveTrap.SetActive(false);
         setActiveTrap2.SetActive(false);
-        setActiveTrap3.SetActive(false);
+        setActiveTrap3.SetActive(true);
         //Time Spawn Crab
         timeDurationCrab = 1.5f;
         timerCrab = timeDurationCrab;
@@ -222,6 +222,7 @@ public class GameController : MonoBehaviour
     }
 
     //Mission - 2 Spawn Crab and Bat
+    
 
     protected virtual void SpawnEnemyBatAndCrab()
     {
@@ -243,9 +244,9 @@ public class GameController : MonoBehaviour
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 2f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if(checkQuantilyBatMission2 < 300)
+                        if(checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 2f), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }
@@ -261,9 +262,9 @@ public class GameController : MonoBehaviour
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 1f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if (checkQuantilyBatMission2 < 300)
+                        if (checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 1f), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }
@@ -279,9 +280,9 @@ public class GameController : MonoBehaviour
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if (checkQuantilyBatMission2 < 300)
+                        if (checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }
@@ -297,9 +298,9 @@ public class GameController : MonoBehaviour
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 1f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if (checkQuantilyBatMission2 < 300)
+                        if (checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 1f), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }
@@ -315,9 +316,9 @@ public class GameController : MonoBehaviour
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 2f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if (checkQuantilyBatMission2 < 300)
+                        if (checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 2f), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }
@@ -330,15 +331,15 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 500)
                         {
                             if (checkQuantilyCrabMission2 >= 200) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 2f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if (checkQuantilyBatMission2 < 300)
+                        if (checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 2f), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }
@@ -355,9 +356,9 @@ public class GameController : MonoBehaviour
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 1f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if (checkQuantilyBatMission2 < 300)
+                        if (checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 1f), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }
@@ -373,9 +374,9 @@ public class GameController : MonoBehaviour
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if (checkQuantilyBatMission2 < 300)
+                        if (checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }
@@ -391,9 +392,9 @@ public class GameController : MonoBehaviour
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 1f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if (checkQuantilyBatMission2 < 300)
+                        if (checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 1f), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }
@@ -409,9 +410,9 @@ public class GameController : MonoBehaviour
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 2f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
-                        if (checkQuantilyBatMission2 < 300)
+                        if (checkQuantilyBatMission2 <= 500)
                         {
-                            if (checkQuantilyBatMission2 >= 500) return;
+                            if (checkQuantilyBatMission2 > 500) return;
                             Instantiate(batPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 2f), Quaternion.identity);
                             checkQuantilyBatMission2++;
                         }

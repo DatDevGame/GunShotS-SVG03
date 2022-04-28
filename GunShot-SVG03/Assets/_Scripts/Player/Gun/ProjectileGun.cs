@@ -30,7 +30,7 @@ public class ProjectileGun : MonoBehaviour
         //Script - PlayerShot Singleton
         if (PlayerShot.ins.Pistol || PlayerShot.ins.Glock || PlayerShot.ins.Flame)
         {
-            shotDame = 1;
+            shotDame = 100;
         }
         else if (PlayerShot.ins.MachineGun)
         {

@@ -88,19 +88,20 @@ public class StatusEnemy : MonoBehaviour
         {
             //Check Mission 1  - Map 1
             MissionPlayer.ins.checkQuantilyCrabDead += 1;
-            MissionPlayer.ins.CheckQuantiylyCrabMission2 += 1;
-            MissionPlayer.ins.CheckQuantiylyBatMission2 += 1;
             MissionPlayer.ins.TextMission1(""+ MissionPlayer.ins.checkQuantilyCrabDead);
-            MissionPlayer.ins.TextMission2QuantilyCrab(""+ MissionPlayer.ins.CheckQuantiylyCrabMission2);
-            MissionPlayer.ins.TextMission2QuantilyBat(""+ MissionPlayer.ins.CheckQuantiylyBatMission2);
-
-
             StatusPlayer.ins.Score += 1;
             ui.setScoreText("Score: " + StatusPlayer.ins.Score);
             spawnCoinCrab();
             spawnCristal();
             anim.SetBool("CrabDead", true);
             Destroy(gameObject, 3f);
+
+            //Mission 2
+            if (MissionPlayer.ins.checkClickRewardMission2)
+            {
+                MissionPlayer.ins.CheckQuantiylyCrabMission2 += 1;
+                MissionPlayer.ins.TextMission2QuantilyCrab("" + MissionPlayer.ins.CheckQuantiylyCrabMission2);
+            }
         }
         if (this.gameObject.tag == "Bat")
         {
@@ -110,6 +111,13 @@ public class StatusEnemy : MonoBehaviour
             spawnCristal();
             anim.SetBool("BatDead", true);
             Destroy(gameObject, 3f);
+
+            //Mission 2
+            if (MissionPlayer.ins.checkClickRewardMission2)
+            {
+                MissionPlayer.ins.CheckQuantiylyBatMission2 += 1;
+                MissionPlayer.ins.TextMission2QuantilyBat("" + MissionPlayer.ins.CheckQuantiylyBatMission2);
+            }
         }
         if (this.gameObject.tag == "Rat")
         {

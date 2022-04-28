@@ -26,6 +26,7 @@ public class MissionPlayer : MonoBehaviour
     public GameObject Mission1Close;
 
     //Mission 2 - Map 1
+    public bool checkClickRewardMission2;
     public GameObject Mission2;
     public GameObject showBtnMission2;
     public Text TextCheckQuantiylyCrabMission2;
@@ -41,6 +42,7 @@ public class MissionPlayer : MonoBehaviour
     protected virtual void Start()
     {
         showMissionTable.SetActive(false);
+        checkClickRewardMission2 = false;
     }
     protected virtual void Update()
     {
@@ -120,6 +122,8 @@ public class MissionPlayer : MonoBehaviour
         StatusPlayer.ins.Cristal += 20;
         UIManager.ins.setCristalText(""+StatusPlayer.ins.Cristal);
         Mission2.SetActive(true);
+        checkClickRewardMission2 = true;
+        GameController.ins.setActiveTrap3.SetActive(false);
     }
     protected virtual void showBtnRewardMission1()
     {
