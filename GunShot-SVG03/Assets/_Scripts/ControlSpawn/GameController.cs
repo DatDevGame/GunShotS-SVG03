@@ -447,6 +447,7 @@ public class GameController : MonoBehaviour
             if (timerItemSpeedUp <= 0)
             {
                 if (checkQuantilyBatMission2 >= 500) return;
+                aus.PlayOneShot(soundHelicopterDropItem);
                 Instantiate(ItemSpeedUpPrefabs, new Vector2(randXposSpawnItemSpeedAndMedical, randYposSpawnItemSpeedAndMedical), Quaternion.identity);
                 randXposSpawnItemSpeedAndMedical = Random.Range(35f, 65f);
                 randYposSpawnItemSpeedAndMedical = Random.Range(-66f, -59f);
@@ -457,6 +458,7 @@ public class GameController : MonoBehaviour
             if(timeSpawnMedical <= 0)
             {
                 if (checkQuantilyCrabMission2 >= 300) return;
+                aus.PlayOneShot(soundHelicopterDropItem);
                 Instantiate(MedicalPrefabs, new Vector2(randXposSpawnItemSpeedAndMedical, randYposSpawnItemSpeedAndMedical), Quaternion.identity);
                 randXposSpawnItemSpeedAndMedical = Random.Range(35f, 65f);
                 randYposSpawnItemSpeedAndMedical = Random.Range(-66f, -59f);

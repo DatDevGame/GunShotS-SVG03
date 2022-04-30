@@ -30,7 +30,7 @@ public class ProjectileGun : MonoBehaviour
         //Script - PlayerShot Singleton
         if (PlayerShot.ins.Pistol || PlayerShot.ins.Glock || PlayerShot.ins.Flame)
         {
-            shotDame = 100;
+            shotDame = 1;
         }
         else if (PlayerShot.ins.MachineGun)
         {
@@ -43,6 +43,10 @@ public class ProjectileGun : MonoBehaviour
     }
     
     public void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Crab"))
         {
