@@ -62,6 +62,9 @@ public class MissionPlayer : MonoBehaviour
     //Set Table Mission==================================
     public virtual void btnShowMission1True()
     {
+        //Whem Menu On not Open table Mission
+        if (UIManager.ins.checkMenuShow) return;
+
         //Bag showing not open Mission
         if (UIManager.ins.checkShowPanelBag) return;
 
