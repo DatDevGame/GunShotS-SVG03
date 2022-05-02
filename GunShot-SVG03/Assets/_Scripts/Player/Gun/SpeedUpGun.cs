@@ -13,7 +13,7 @@ public class SpeedUpGun : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(PlayerShot.ins.Pistol)
+            if (PlayerShot.ins.Pistol)
             {
                 PlayerShot.ins.timeDurationPistrol = 0.05f;
             }
@@ -32,6 +32,10 @@ public class SpeedUpGun : MonoBehaviour
             else if (PlayerShot.ins.Rocket)
             {
                 PlayerShot.ins.timeDurationRocket = 0.20f;
+            }
+            else if (PlayerShot.ins.GattlingGun)
+            {
+                PlayerShot.ins.timeDurationGattlingGun = 0f;
             }
             Destroy(gameObject);
         }

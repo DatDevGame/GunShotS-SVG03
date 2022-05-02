@@ -60,7 +60,7 @@ public class StatusEnemy : MonoBehaviour
         }
         if (this.gameObject.tag == "GolemUp")
         {
-            maxHealth = 1000;
+            maxHealth = 5000;
             currentHealth = maxHealth;
         }
         if (this.gameObject.tag == "Slime")

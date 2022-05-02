@@ -17,17 +17,20 @@ public class BagManager : MonoBehaviour
     public GameObject btnBuyFlame;
     public GameObject btnBuyLazer;
     public GameObject btnBuyRocket;
+    public GameObject btnBuyGattling;
     //Set Btn Use
     public GameObject btnUsePistol;
     public GameObject btnUseGlock;
     public GameObject btnUseFlame;
     public GameObject btnUseLazer;
     public GameObject btnUseRocket;
+    public GameObject btnUseGattlingGun;
     protected bool PistolBought;
     protected bool GlockBought;
     protected bool FlameBought;
     protected bool LazerBought;
     protected bool RocketBought;
+    protected bool GattlingGunBought;
 
     //Hiden Text Coin
     public GameObject textCoinPistol;
@@ -35,6 +38,7 @@ public class BagManager : MonoBehaviour
     public GameObject textCoinFlame;
     public GameObject textCoinLazer;
     public GameObject textCoinRocket;
+    public GameObject textCoinGattlingGun;
 
     //Set Active Gun
     public GameObject Pistol;
@@ -42,6 +46,7 @@ public class BagManager : MonoBehaviour
     public GameObject FlameThrower;
     public GameObject Lazer;
     public GameObject Rocket;
+    public GameObject GattlingGun;
 
     //Show Sound Not Buy Gun
     AudioSource aus;
@@ -66,6 +71,7 @@ public class BagManager : MonoBehaviour
         btnUseFlame.SetActive(false);
         btnUseLazer.SetActive(false);
         btnUseRocket.SetActive(false);
+        btnUseGattlingGun.SetActive(false);
     }
     //Set Button Buy GUI Bag Player
     public virtual void btnPistol()
@@ -171,6 +177,25 @@ public class BagManager : MonoBehaviour
         }
     }
 
+    public virtual void btnGattlingGun()
+    {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+        if (StatusPlayer.ins.coin >= 10000)
+        {
+            StatusPlayer.ins.coin -= 10000;
+            ui.setCoinText("Coin: " + StatusPlayer.ins.coin);
+            aus.PlayOneShot(soundBoughtGun);
+            textCoinGattlingGun.SetActive(false);
+            btnBuyGattling.SetActive(false);
+            btnUseGattlingGun.SetActive(true);
+        }
+        else
+        {
+            aus.PlayOneShot(soundNotMoney);
+        }
+    }
+
     //Set Button Use GUI Bag Player
 
     public virtual void UseBtnPistol()
@@ -184,6 +209,7 @@ public class BagManager : MonoBehaviour
         if(FlameBought) btnUseFlame.SetActive(true);
         if(LazerBought) btnUseLazer.SetActive(true);
         if(RocketBought) btnUseRocket.SetActive(true);
+        if (GattlingGunBought) btnUseGattlingGun.SetActive(true);
 
         //Set Active Gun
         Pistol.SetActive(true);
@@ -191,6 +217,7 @@ public class BagManager : MonoBehaviour
         FlameThrower.SetActive(false);
         Lazer.SetActive(false);
         Rocket.SetActive(false);
+        GattlingGun.SetActive(false);
 
         //Set Gun For Player Use
         PlayerShot.ins.Pistol = true;
@@ -198,6 +225,7 @@ public class BagManager : MonoBehaviour
         PlayerShot.ins.Flame = false;
         PlayerShot.ins.MachineGun = false;
         PlayerShot.ins.Rocket = false;
+        PlayerShot.ins.GattlingGun = false;
     }
 
     public virtual void UseBtnGlock()
@@ -211,6 +239,7 @@ public class BagManager : MonoBehaviour
         if (FlameBought) btnUseFlame.SetActive(true);
         if (LazerBought) btnUseLazer.SetActive(true);
         if (RocketBought) btnUseRocket.SetActive(true);
+        if (GattlingGunBought) btnUseGattlingGun.SetActive(true);
 
         //Set Active Gun
         Pistol.SetActive(false);
@@ -218,6 +247,7 @@ public class BagManager : MonoBehaviour
         FlameThrower.SetActive(false);
         Lazer.SetActive(false);
         Rocket.SetActive(false);
+        GattlingGun.SetActive(false);
 
         //Set Gun For Player Use
         PlayerShot.ins.Pistol = false;
@@ -225,6 +255,7 @@ public class BagManager : MonoBehaviour
         PlayerShot.ins.Flame = false;
         PlayerShot.ins.MachineGun = false;
         PlayerShot.ins.Rocket = false;
+        PlayerShot.ins.GattlingGun = false;
     }
 
     public virtual void UseBtnFlame()
@@ -238,6 +269,7 @@ public class BagManager : MonoBehaviour
         btnUseFlame.SetActive(false);
         if (LazerBought) btnUseLazer.SetActive(true);
         if (RocketBought) btnUseRocket.SetActive(true);
+        if (GattlingGunBought) btnUseGattlingGun.SetActive(true);
 
         //Set Active Gun
         Pistol.SetActive(false);
@@ -245,6 +277,7 @@ public class BagManager : MonoBehaviour
         FlameThrower.SetActive(true);
         Lazer.SetActive(false);
         Rocket.SetActive(false);
+        GattlingGun.SetActive(false);
 
         //Set Gun For Player Use
         PlayerShot.ins.Pistol = false;
@@ -252,6 +285,7 @@ public class BagManager : MonoBehaviour
         PlayerShot.ins.Flame = true;
         PlayerShot.ins.MachineGun = false;
         PlayerShot.ins.Rocket = false;
+        PlayerShot.ins.GattlingGun = false;
     }
 
     public virtual void UseBtnLazer()
@@ -265,6 +299,7 @@ public class BagManager : MonoBehaviour
         if (FlameBought) btnUseFlame.SetActive(true);
         btnUseLazer.SetActive(false);
         if (RocketBought) btnUseRocket.SetActive(true);
+        if (GattlingGunBought) btnUseGattlingGun.SetActive(true);
 
         //Set Active Gun
         Pistol.SetActive(false);
@@ -272,6 +307,7 @@ public class BagManager : MonoBehaviour
         FlameThrower.SetActive(false);
         Lazer.SetActive(true);
         Rocket.SetActive(false);
+        GattlingGun.SetActive(false);
 
         //Set Gun For Player Use
         PlayerShot.ins.Pistol = false;
@@ -279,6 +315,7 @@ public class BagManager : MonoBehaviour
         PlayerShot.ins.Flame = false;
         PlayerShot.ins.MachineGun = true;
         PlayerShot.ins.Rocket = false;
+        PlayerShot.ins.GattlingGun = false;
     }
 
     public virtual void UseBtnRocket()
@@ -292,6 +329,7 @@ public class BagManager : MonoBehaviour
         if (GlockBought) btnUseGlock.SetActive(true);
         if (FlameBought) btnUseFlame.SetActive(true);
         if (LazerBought) btnUseLazer.SetActive(true);
+        if (GattlingGunBought) btnUseGattlingGun.SetActive(true);
         btnUseRocket.SetActive(false);
 
         //Set Active Gun
@@ -300,6 +338,7 @@ public class BagManager : MonoBehaviour
         FlameThrower.SetActive(false);
         Lazer.SetActive(false);
         Rocket.SetActive(true);
+        GattlingGun.SetActive(false);
 
         //Set Gun For Player Use
         PlayerShot.ins.Pistol = false;
@@ -307,6 +346,36 @@ public class BagManager : MonoBehaviour
         PlayerShot.ins.Flame = false;
         PlayerShot.ins.MachineGun = false;
         PlayerShot.ins.Rocket = true;
+        PlayerShot.ins.GattlingGun = false;
+    }
+
+    public virtual void UseBtnGattling()
+    {
+        if (StatusPlayer.ins.currentHealth <= 0) return;
+
+        //Set hiden Btn When Use
+        if (PistolBought) btnUsePistol.SetActive(true);
+        if (GlockBought) btnUseGlock.SetActive(true);
+        if (FlameBought) btnUseFlame.SetActive(true);
+        if (LazerBought) btnUseLazer.SetActive(true);
+        if (RocketBought) btnBuyRocket.SetActive(true);
+        btnUseGattlingGun.SetActive(false);
+
+        //Set Active Gun
+        Pistol.SetActive(false);
+        Glock.SetActive(false);
+        FlameThrower.SetActive(false);
+        Lazer.SetActive(false);
+        Rocket.SetActive(false);
+        GattlingGun.SetActive(true);
+
+        //Set Gun For Player Use
+        PlayerShot.ins.Pistol = false;
+        PlayerShot.ins.Glock = false;
+        PlayerShot.ins.Flame = false;
+        PlayerShot.ins.MachineGun = false;
+        PlayerShot.ins.Rocket = false;
+        PlayerShot.ins.GattlingGun = true;
     }
 
     public virtual void BuyBtnMedical()
@@ -376,7 +445,7 @@ public class BagManager : MonoBehaviour
             StatusPlayer.ins.Cristal -= 25;
             QuantilyItemSpeedup += 1;
             UIManager.ins.setItemSpeedText("X: "+QuantilyItemSpeedup);
-            UIManager.ins.setCristalText("X: "+ StatusPlayer.ins.Cristal);
+            UIManager.ins.setCristalText(""+ StatusPlayer.ins.Cristal);
         }
         else
         {
