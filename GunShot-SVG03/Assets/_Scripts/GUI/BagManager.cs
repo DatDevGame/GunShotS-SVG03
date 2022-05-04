@@ -187,6 +187,7 @@ public class BagManager : MonoBehaviour
             ui.setCoinText("Coin: " + StatusPlayer.ins.coin);
             aus.PlayOneShot(soundBoughtGun);
             textCoinGattlingGun.SetActive(false);
+            GattlingGunBought = true;
             btnBuyGattling.SetActive(false);
             btnUseGattlingGun.SetActive(true);
         }
@@ -358,7 +359,7 @@ public class BagManager : MonoBehaviour
         if (GlockBought) btnUseGlock.SetActive(true);
         if (FlameBought) btnUseFlame.SetActive(true);
         if (LazerBought) btnUseLazer.SetActive(true);
-        if (RocketBought) btnBuyRocket.SetActive(true);
+        if (RocketBought) btnUseRocket.SetActive(true);
         btnUseGattlingGun.SetActive(false);
 
         //Set Active Gun

@@ -43,7 +43,10 @@ public class GameController : MonoBehaviour
     protected float randXposSpawnItemSpeedAndMedical;
     protected float randYposSpawnItemSpeedAndMedical;
 
-    public GameObject golemPrefabs;
+
+    //Spawn Boss Mission 2
+    public GameObject BossPrefabs;
+    protected bool bossShow;
 
 
 
@@ -123,6 +126,7 @@ public class GameController : MonoBehaviour
         SpawnEnemyBatAndCrab();
         boxCheckSpawn2();
         SpawnRandomPosItemSpeedAndMedical();
+        SpawnBossMission2();
         #endregion
     }
     #region -------------------------Map-1 Game----------------------
@@ -243,9 +247,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 2f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -261,9 +265,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y - 1f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -279,9 +283,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -297,9 +301,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 1f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -315,9 +319,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab1.position.x, posSpawnBatAndCrab1.position.y + 2f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -336,9 +340,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 500)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 2f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -355,9 +359,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y - 1f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -373,9 +377,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -391,9 +395,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 1f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -409,9 +413,9 @@ public class GameController : MonoBehaviour
                         spawnRandom = Random.Range(1, 5);
                         randSpawnBatAndCrab = Random.Range(1, 3);
                         timerBat = timeDurationBat;
-                        if (checkQuantilyCrabMission2 < 200)
+                        if (checkQuantilyCrabMission2 < 300)
                         {
-                            if (checkQuantilyCrabMission2 >= 200) return;
+                            if (checkQuantilyCrabMission2 >= 300) return;
                             Instantiate(crabPrefabs, new Vector2(posSpawnBatAndCrab2.position.x, posSpawnBatAndCrab2.position.y + 2f), Quaternion.identity);
                             checkQuantilyCrabMission2++;
                         }
@@ -425,6 +429,18 @@ public class GameController : MonoBehaviour
                 }
             }
         }
+    }
+
+    protected virtual void SpawnBossMission2()
+    {
+        if (bossShow) return;
+
+        if (checkQuantilyCrabMission2 > 200)
+        {
+            Instantiate(BossPrefabs, new Vector2(49.2f, -63f), Quaternion.identity);
+            bossShow = true;
+        }
+        
     }
     protected virtual void boxCheckSpawn2()
     {
@@ -441,12 +457,11 @@ public class GameController : MonoBehaviour
     {
         if (checkPlayerZoneBatAndCrab)
         {
-
+            if (StatusEnemy.ins.checkBossMap1Dead) return;
             timerItemSpeedUp -= Time.deltaTime;
             Debug.Log(timerItemSpeedUp);
             if (timerItemSpeedUp <= 0)
             {
-                if (checkQuantilyBatMission2 >= 500) return;
                 aus.PlayOneShot(soundHelicopterDropItem);
                 Instantiate(ItemSpeedUpPrefabs, new Vector2(randXposSpawnItemSpeedAndMedical, randYposSpawnItemSpeedAndMedical), Quaternion.identity);
                 randXposSpawnItemSpeedAndMedical = Random.Range(35f, 65f);
@@ -457,7 +472,6 @@ public class GameController : MonoBehaviour
             timeSpawnMedical -= Time.deltaTime;
             if(timeSpawnMedical <= 0)
             {
-                if (checkQuantilyCrabMission2 >= 300) return;
                 aus.PlayOneShot(soundHelicopterDropItem);
                 Instantiate(MedicalPrefabs, new Vector2(randXposSpawnItemSpeedAndMedical, randYposSpawnItemSpeedAndMedical), Quaternion.identity);
                 randXposSpawnItemSpeedAndMedical = Random.Range(35f, 65f);

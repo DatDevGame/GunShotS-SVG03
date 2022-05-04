@@ -20,7 +20,8 @@ public class StatusEnemy : MonoBehaviour
     public GameObject CristalPrefabs;
     protected int randCristal;
 
-    //Set CheckQuantilyCrab for MissionPlayer
+    //Check Boss map 1 - Mission 2 Dead
+    public bool checkBossMap1Dead;
 
 
     private void Awake()
@@ -155,6 +156,7 @@ public class StatusEnemy : MonoBehaviour
             Instantiate(CristalPrefabs, new Vector2(transform.position.x - 2f, transform.position.y + 2f), Quaternion.identity);
             Instantiate(CristalPrefabs, new Vector2(transform.position.x - 2f, transform.position.y - 2f), Quaternion.identity);
             Instantiate(CristalPrefabs, new Vector2(transform.position.x + 2.3f, transform.position.y - 2.3f), Quaternion.identity);
+            checkBossMap1Dead = true;
         }
         if (this.gameObject.tag == "Slime")
         {
