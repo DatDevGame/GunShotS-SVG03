@@ -25,12 +25,12 @@ public class LoadingScene : MonoBehaviour
         timeLoading = 0f;
         if (randomTime == 1)
         {
-            LoadingSlider.maxValue = 7f;
+            LoadingSlider.maxValue = 2f;
             LoadingSlider.value = timeLoading;
         }
         else if (randomTime == 2)
         {
-            LoadingSlider.maxValue = 5f;
+            LoadingSlider.maxValue = 1.5f;
             LoadingSlider.value = timeLoading;
         }
         else if (randomTime == 3)
@@ -47,7 +47,7 @@ public class LoadingScene : MonoBehaviour
         {
             timeLoading += Time.deltaTime;
             LoadingSlider.value = timeLoading;
-            if (timeLoading >= 7f)
+            if (timeLoading >= 2f)
             {
                 SceneManager.LoadScene("Map-1");
                 showPlayer.SetActive(true);
@@ -57,7 +57,7 @@ public class LoadingScene : MonoBehaviour
         {
             timeLoading += Time.deltaTime;
             LoadingSlider.value = timeLoading;
-            if (timeLoading >= 5f)
+            if (timeLoading >= 1.5f)
             {
                 SceneManager.LoadScene("Map-1");
                 showPlayer.SetActive(true);

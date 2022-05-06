@@ -76,16 +76,20 @@ public class GameController : MonoBehaviour
 
     //Set NPC
     public GameObject effectMission;
+
+    public GameObject showPlayer;
     private void Awake()
     {
         ins = this;
         target = GameObject.Find("Player");
         posCheckCrab = transform.Find("posCheckCrab");
+        showPlayer = GameObject.Find("====General====");
         aus = GetComponent<AudioSource>();
     }
 
     protected virtual void Start()
     {
+        showPlayer.SetActive(true);
         //Spawn Item Medical
         timeSpawnMedical = Random.Range(200f, 250f);
         randXPosMedical = Random.Range(-3.5f, 3.5f);
@@ -435,7 +439,7 @@ public class GameController : MonoBehaviour
     {
         if (bossShow) return;
 
-        if (checkQuantilyCrabMission2 > 200)
+        if (checkQuantilyCrabMission2 > 300)
         {
             Instantiate(BossPrefabs, new Vector2(49.2f, -63f), Quaternion.identity);
             bossShow = true;

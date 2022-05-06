@@ -122,7 +122,7 @@ public class MissionPlayer : MonoBehaviour
         Mouse.ins.checkMission1 = true;
         checkQuantilyCrabDead = 0;
         Mission1Close.SetActive(false);
-        StatusPlayer.ins.Cristal += 20;
+        StatusPlayer.ins.ReceiveCristal(20);
         UIManager.ins.setCristalText(""+StatusPlayer.ins.Cristal);
         Mission2.SetActive(true);
         checkClickRewardMission2 = true;
@@ -158,7 +158,7 @@ public class MissionPlayer : MonoBehaviour
     }
     public virtual void btnRewardMission2()
     {
-        StatusPlayer.ins.Cristal += 50;
+        StatusPlayer.ins.ReceiveCristal(50);
         UIManager.ins.setCristalText(""+StatusPlayer.ins.Cristal);
         Mission2.SetActive(false);
     }

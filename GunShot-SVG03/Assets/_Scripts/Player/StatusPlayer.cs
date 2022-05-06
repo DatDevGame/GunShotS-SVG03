@@ -16,6 +16,7 @@ public class StatusPlayer : MonoBehaviour
     [SerializeField] private int maxHealth;
     public Slider healthSlider;
 
+
     //Status Item - Score
     public int coin;
     public AudioClip soundCoin;
@@ -33,6 +34,8 @@ public class StatusPlayer : MonoBehaviour
     }
     protected virtual void Start()
     {
+        coin = PlayerPrefs.GetInt("CoinPlayer");
+        Cristal = PlayerPrefs.GetInt("CristalPlayer");
         transform.localScale = new Vector3(-1f, 1f, 1f);
 
         //SingleTon
@@ -72,12 +75,14 @@ public class StatusPlayer : MonoBehaviour
     public void ReceiveCoin(int Recoin)
     {
         coin += Recoin;
+        PlayerPrefs.SetInt("CoinPlayer", coin);
         ui.setCoinText("Coin: " + coin);
         aus.PlayOneShot(soundCoin);
     }
     public void ReceiveCristal(int ReCristal)
     {
         Cristal += ReCristal;
+        PlayerPrefs.SetInt("CristalPlayer", Cristal);
         ui.setCristalText("" + Cristal);
         aus.PlayOneShot(soundCoin);
     }
